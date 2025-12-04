@@ -84,7 +84,24 @@ const Home = () => {
       toast.success(`File converted successfully to ${outputFormat.toUpperCase()}!`);
     } catch (error) {
       console.error('Error converting file:', error);
-      toast.error(error.response?.data?.detail || "Failed to convert file");
+      
+      // Handle blob error responses
+      let errorMessage = "Failed to convert file";
+      if (error.response?.data instanceof Blob) {
+        try {
+          const text = await error.response.data.text();
+          const errorData = JSON.parse(text);
+          errorMessage = errorData.detail || errorMessage;
+        } catch (e) {
+          errorMessage = "Failed to convert file";
+        }
+      } else if (error.response?.data?.detail) {
+        errorMessage = error.response.data.detail;
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      toast.error(errorMessage);
     } finally {
       setConverting(false);
     }
