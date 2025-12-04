@@ -108,12 +108,25 @@ const Home = () => {
 
   const handleDownload = () => {
     if (convertedFile) {
-      const link = document.createElement('a');
-      link.href = convertedFile.url;
-      link.download = convertedFile.filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      try {
+        const link = document.createElement('a');
+        link.href = convertedFile.url;
+        link.download = convertedFile.filename;
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        
+        // Clean up
+        setTimeout(() => {
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(convertedFile.url);
+        }, 100);
+        
+        toast.success('Download started!');
+      } catch (error) {
+        console.error('Download error:', error);
+        toast.error('Failed to download file. Please try again.');
+      }
     }
   };
 
