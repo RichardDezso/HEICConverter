@@ -1,5 +1,5 @@
 from fastapi import FastAPI, APIRouter, UploadFile, File, Form, HTTPException
-from fastapi.responses import FileResponse, Response
+from fastapi.responses import FileResponse, Response, StreamingResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -15,6 +15,8 @@ import shutil
 from PIL import Image
 import pillow_heif
 import img2pdf
+import zipfile
+import io
 
 # Register HEIF opener with Pillow
 pillow_heif.register_heif_opener()
@@ -75,6 +77,52 @@ async def get_status_checks():
     return status_checks
 
 
+def convert_heic_to_format(input_path: str, output_format: str) -> bytes:
+    """
+    Convert HEIC file to specified format and return bytes.
+    """
+    # Open HEIC image
+    img = Image.open(input_path)
+    
+    # Convert RGBA to RGB if necessary (for JPEG)
+    if img.mode in ('RGBA', 'LA') and output_format in ['jpeg', 'jpg']:
+        background = Image.new('RGB', img.size, (255, 255, 255))
+        background.paste(img, mask=img.split()[-1] if img.mode == 'RGBA' else None)
+        img = background
+    
+    # Generate output
+    output_extension = 'jpg' if output_format == 'jpeg' else output_format
+    
+    if output_format == 'pdf':
+        # Convert to PDF using img2pdf
+        # First save as PNG temporarily
+        temp_png_fd, temp_png_path = tempfile.mkstemp(suffix='.png')
+        os.close(temp_png_fd)
+        
+        try:
+            if img.mode in ('RGBA', 'LA'):
+                img_rgb = Image.new('RGB', img.size, (255, 255, 255))
+                img_rgb.paste(img, mask=img.split()[-1] if img.mode == 'RGBA' else None)
+                img_rgb.save(temp_png_path, 'PNG')
+            else:
+                img.save(temp_png_path, 'PNG')
+            
+            # Convert PNG to PDF
+            pdf_bytes = img2pdf.convert(temp_png_path)
+            return pdf_bytes
+        finally:
+            # Clean up temporary PNG
+            if os.path.exists(temp_png_path):
+                os.unlink(temp_png_path)
+            img.close()
+    else:
+        # Save as JPEG or PNG to bytes
+        output_buffer = io.BytesIO()
+        img.save(output_buffer, output_format.upper())
+        img.close()
+        return output_buffer.getvalue()
+
+
 @api_router.options("/convert")
 async def convert_options():
     """Handle CORS preflight requests"""
@@ -107,7 +155,6 @@ async def convert_heic(
         )
     
     temp_input_path = None
-    temp_output_path = None
     
     try:
         # Create temporary file for input HEIC
@@ -117,63 +164,20 @@ async def convert_heic(
             content = await file.read()
             temp_input.write(content)
         
-        # Open HEIC image
-        img = Image.open(temp_input_path)
-        
-        # Convert RGBA to RGB if necessary (for JPEG)
-        if img.mode in ('RGBA', 'LA') and output_format in ['jpeg', 'jpg']:
-            background = Image.new('RGB', img.size, (255, 255, 255))
-            background.paste(img, mask=img.split()[-1] if img.mode == 'RGBA' else None)
-            img = background
-        
-        # Generate output filename
-        base_filename = Path(file.filename).stem
-        output_extension = 'jpg' if output_format == 'jpeg' else output_format
-        output_filename = f"{base_filename}.{output_extension}"
-        
-        # Create temporary file for output
-        temp_output_fd, temp_output_path = tempfile.mkstemp(suffix=f'.{output_extension}')
-        os.close(temp_output_fd)
-        
-        if output_format == 'pdf':
-            # Convert to PDF using img2pdf
-            # First save as PNG temporarily
-            temp_png_fd, temp_png_path = tempfile.mkstemp(suffix='.png')
-            os.close(temp_png_fd)
-            
-            if img.mode in ('RGBA', 'LA'):
-                img_rgb = Image.new('RGB', img.size, (255, 255, 255))
-                img_rgb.paste(img, mask=img.split()[-1] if img.mode == 'RGBA' else None)
-                img_rgb.save(temp_png_path, 'PNG')
-            else:
-                img.save(temp_png_path, 'PNG')
-            
-            # Convert PNG to PDF
-            with open(temp_output_path, 'wb') as f:
-                f.write(img2pdf.convert(temp_png_path))
-            
-            # Clean up temporary PNG
-            os.unlink(temp_png_path)
-        else:
-            # Save as JPEG or PNG
-            img.save(temp_output_path, output_format.upper())
-        
-        img.close()
+        # Convert the file
+        file_content = convert_heic_to_format(temp_input_path, output_format)
         
         # Delete the input file (as per requirement)
         if temp_input_path and os.path.exists(temp_input_path):
             os.unlink(temp_input_path)
             temp_input_path = None
         
-        # Read the converted file into memory
-        with open(temp_output_path, 'rb') as f:
-            file_content = f.read()
+        # Generate output filename
+        base_filename = Path(file.filename).stem
+        output_extension = 'jpg' if output_format == 'jpeg' else output_format
+        output_filename = f"{base_filename}.{output_extension}"
         
-        # Clean up the temporary output file
-        os.unlink(temp_output_path)
-        temp_output_path = None
-        
-        # Return the converted file as a streaming response
+        # Return the converted file
         return Response(
             content=file_content,
             media_type=f"image/{output_extension}" if output_format != 'pdf' else "application/pdf",
@@ -186,13 +190,109 @@ async def convert_heic(
         # Clean up temporary files in case of error
         if temp_input_path and os.path.exists(temp_input_path):
             os.unlink(temp_input_path)
-        if temp_output_path and os.path.exists(temp_output_path):
-            os.unlink(temp_output_path)
         
         logger.error(f"Error converting file: {str(e)}")
         raise HTTPException(
             status_code=500,
             detail=f"Error converting file: {str(e)}"
+        )
+
+
+@api_router.post("/convert-batch")
+async def convert_heic_batch(
+    files: List[UploadFile] = File(...),
+    output_format: str = Form("jpeg")
+):
+    """
+    Convert multiple HEIC files to JPEG, PNG, or PDF format.
+    Returns a ZIP file containing all converted files.
+    """
+    # Validate output format
+    valid_formats = ["jpeg", "jpg", "png", "pdf"]
+    output_format = output_format.lower()
+    
+    if output_format not in valid_formats:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid output format. Supported formats: {', '.join(valid_formats)}"
+        )
+    
+    if not files or len(files) == 0:
+        raise HTTPException(
+            status_code=400,
+            detail="No files provided"
+        )
+    
+    temp_input_paths = []
+    converted_files = []
+    
+    try:
+        # Process each file
+        for file in files:
+            # Validate file extension
+            if not file.filename.lower().endswith(('.heic', '.heif')):
+                logger.warning(f"Skipping non-HEIC file: {file.filename}")
+                continue
+            
+            # Create temporary file for input HEIC
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.heic') as temp_input:
+                temp_input_path = temp_input.name
+                temp_input_paths.append(temp_input_path)
+                
+                # Write uploaded file to temp location
+                content = await file.read()
+                temp_input.write(content)
+            
+            # Convert the file
+            file_content = convert_heic_to_format(temp_input_path, output_format)
+            
+            # Generate output filename
+            base_filename = Path(file.filename).stem
+            output_extension = 'jpg' if output_format == 'jpeg' else output_format
+            output_filename = f"{base_filename}.{output_extension}"
+            
+            converted_files.append((output_filename, file_content))
+        
+        if not converted_files:
+            raise HTTPException(
+                status_code=400,
+                detail="No valid HEIC files found"
+            )
+        
+        # Create ZIP file in memory
+        zip_buffer = io.BytesIO()
+        with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+            for filename, content in converted_files:
+                zip_file.writestr(filename, content)
+        
+        zip_buffer.seek(0)
+        
+        # Clean up temporary input files
+        for temp_path in temp_input_paths:
+            if os.path.exists(temp_path):
+                os.unlink(temp_path)
+        
+        # Return the ZIP file
+        return StreamingResponse(
+            io.BytesIO(zip_buffer.getvalue()),
+            media_type="application/zip",
+            headers={
+                "Content-Disposition": f"attachment; filename=converted_files.zip"
+            }
+        )
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        # Clean up temporary files in case of error
+        for temp_path in temp_input_paths:
+            if os.path.exists(temp_path):
+                os.unlink(temp_path)
+        
+        logger.error(f"Error converting batch files: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error converting files: {str(e)}"
         )
 
 
