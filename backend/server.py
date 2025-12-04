@@ -75,6 +75,11 @@ async def get_status_checks():
     return status_checks
 
 
+@api_router.options("/convert")
+async def convert_options():
+    """Handle CORS preflight requests"""
+    return {"detail": "OK"}
+
 @api_router.post("/convert")
 async def convert_heic(
     file: UploadFile = File(...),
