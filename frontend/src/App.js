@@ -131,6 +131,14 @@ const Home = () => {
   };
 
   const resetConverter = () => {
+    // Clean up blob URLs to prevent memory leaks
+    if (previewUrl) {
+      window.URL.revokeObjectURL(previewUrl);
+    }
+    if (convertedFile?.url) {
+      window.URL.revokeObjectURL(convertedFile.url);
+    }
+    
     setSelectedFile(null);
     setConvertedFile(null);
     setPreviewUrl(null);
