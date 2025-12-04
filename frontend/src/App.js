@@ -107,25 +107,42 @@ const Home = () => {
   };
 
   const handleDownload = () => {
-    if (convertedFile) {
+    if (!convertedFile) {
+      toast.error('No file to download');
+      return;
+    }
+
+    try {
+      // Method 1: Standard download with <a> tag
+      const link = document.createElement('a');
+      link.href = convertedFile.url;
+      link.download = convertedFile.filename;
+      link.style.display = 'none';
+      
+      // Add to DOM
+      document.body.appendChild(link);
+      
+      // Trigger download
+      link.click();
+      
+      // Clean up after a delay
+      setTimeout(() => {
+        document.body.removeChild(link);
+      }, 100);
+      
+      toast.success('Download started! Check your downloads folder.');
+      
+      console.log('Download initiated:', convertedFile.filename);
+    } catch (error) {
+      console.error('Download error:', error);
+      
+      // Fallback: Open in new tab if download fails
       try {
-        const link = document.createElement('a');
-        link.href = convertedFile.url;
-        link.download = convertedFile.filename;
-        link.style.display = 'none';
-        document.body.appendChild(link);
-        link.click();
-        
-        // Clean up
-        setTimeout(() => {
-          document.body.removeChild(link);
-          window.URL.revokeObjectURL(convertedFile.url);
-        }, 100);
-        
-        toast.success('Download started!');
-      } catch (error) {
-        console.error('Download error:', error);
-        toast.error('Failed to download file. Please try again.');
+        window.open(convertedFile.url, '_blank');
+        toast.info('Opening file in new tab. Right-click to save.');
+      } catch (fallbackError) {
+        console.error('Fallback error:', fallbackError);
+        toast.error('Failed to download. Please try a different browser.');
       }
     }
   };
