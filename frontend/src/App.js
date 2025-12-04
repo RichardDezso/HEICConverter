@@ -68,7 +68,6 @@ const Home = () => {
 
     try {
       const response = await axios.post(`${API}/convert`, formData, {
-        params: { output_format: outputFormat },
         responseType: 'blob',
         headers: {
           'Content-Type': 'multipart/form-data',
