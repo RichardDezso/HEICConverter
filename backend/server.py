@@ -174,7 +174,6 @@ async def convert_heic(
         temp_output_path = None
         
         # Return the converted file as a streaming response
-        from fastapi.responses import Response
         return Response(
             content=file_content,
             media_type=f"image/{output_extension}" if output_format != 'pdf' else "application/pdf",
