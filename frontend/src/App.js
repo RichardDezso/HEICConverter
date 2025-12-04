@@ -74,8 +74,8 @@ const Home = () => {
         },
       });
 
-      const blob = new Blob([response.data]);
-      const url = window.URL.createObjectURL(blob);
+      // response.data is already a blob due to responseType: 'blob'
+      const url = window.URL.createObjectURL(response.data);
       const extension = outputFormat === 'jpeg' ? 'jpg' : outputFormat;
       const filename = `${selectedFile.name.replace(/\.[^/.]+$/, '')}.${extension}`;
       
