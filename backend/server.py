@@ -165,12 +165,22 @@ async def convert_heic(
             os.unlink(temp_input_path)
             temp_input_path = None
         
-        # Return the converted file
-        return FileResponse(
-            path=temp_output_path,
+        # Read the converted file into memory
+        with open(temp_output_path, 'rb') as f:
+            file_content = f.read()
+        
+        # Clean up the temporary output file
+        os.unlink(temp_output_path)
+        temp_output_path = None
+        
+        # Return the converted file as a streaming response
+        from fastapi.responses import Response
+        return Response(
+            content=file_content,
             media_type=f"image/{output_extension}" if output_format != 'pdf' else "application/pdf",
-            filename=output_filename,
-            background=None
+            headers={
+                "Content-Disposition": f"attachment; filename={output_filename}"
+            }
         )
     
     except Exception as e:
