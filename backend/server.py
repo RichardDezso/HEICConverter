@@ -78,7 +78,7 @@ async def get_status_checks():
 @api_router.post("/convert")
 async def convert_heic(
     file: UploadFile = File(...),
-    output_format: str = "jpeg"
+    output_format: str = Form("jpeg")
 ):
     """
     Convert HEIC file to JPEG, PNG, or PDF format.
