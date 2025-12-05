@@ -278,8 +278,8 @@ const Home = () => {
             <CardTitle>Upload HEIC Files</CardTitle>
             <CardDescription>
               {batchMode 
-                ? "Select multiple HEIC files for batch conversion"
-                : "Select a HEIC or HEIF file and choose your desired output format"}
+                ? "Select multiple HEIC/HEIF files for batch conversion"
+                : "Select HEIC or HEIF files and choose your desired output format"}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
