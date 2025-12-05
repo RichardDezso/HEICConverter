@@ -93,17 +93,10 @@ export const ContactPage = () => {
 
             <div>
               <h3 className="text-lg font-semibold mb-2">Email</h3>
-              <p className="text-muted-foreground">support@heicconverter.com</p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Support Hours</h3>
-              <p className="text-muted-foreground">Monday - Friday: 9:00 AM - 5:00 PM EST</p>
-            </div>
-
-            <div className="pt-6">
-              <p className="text-sm text-muted-foreground">
-                We typically respond within 24 hours during business days.
+              <p className="text-muted-foreground">
+                <a href="mailto:support@heicconverteronline.com" className="text-primary hover:underline">
+                  support@heicconverteronline.com
+                </a>
               </p>
             </div>
           </CardContent>
