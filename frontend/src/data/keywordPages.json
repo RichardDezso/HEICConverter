@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "heic-to-jpg",
+    "title": "Convert HEIC to JPG Online - Free & Fast",
+    "metaDescription": "Convert HEIC to JPG format instantly. Free online HEIC to JPEG converter with batch processing support.",
+    "heading": "HEIC to JPG Converter",
+    "description": "Convert your iPhone photos from HEIC to JPG format quickly and easily. Our free online tool supports batch conversion and maintains image quality.",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "HEIC (High Efficiency Image Container) is the default image format used by Apple devices since iOS 11. While HEIC offers better compression and quality, JPG is more widely supported across different platforms and devices."
+      },
+      {
+        "type": "heading",
+        "text": "Why Convert HEIC to JPG?"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Universal compatibility with all devices and platforms",
+          "Easy sharing on social media and websites",
+          "Opens in any image viewer or editor",
+          "Smaller file size for web use"
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "How to Convert HEIC to JPG"
+      },
+      {
+        "type": "paragraph",
+        "text": "Our converter makes it simple to convert HEIC files to JPG format. Just upload your HEIC files, select JPG as the output format, and download your converted images. You can convert single files or process multiple images at once."
+      }
+    ]
+  },
+  {
+    "slug": "heic-to-png",
+    "title": "Convert HEIC to PNG Online - Lossless Quality",
+    "metaDescription": "Convert HEIC to PNG format with lossless quality. Free online converter supporting transparency and batch conversion.",
+    "heading": "HEIC to PNG Converter",
+    "description": "Convert HEIC images to PNG format while preserving transparency and image quality. Perfect for graphics and images that need transparency support.",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "PNG (Portable Network Graphics) is an excellent format when you need lossless compression and transparency support. Converting HEIC to PNG is ideal for graphics, logos, and images where quality is paramount."
+      },
+      {
+        "type": "heading",
+        "text": "Benefits of PNG Format"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Lossless compression - no quality loss",
+          "Transparency support (alpha channel)",
+          "Better for graphics and text",
+          "Widely supported across all platforms"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "heic-to-pdf",
+    "title": "Convert HEIC to PDF Online - Free Converter",
+    "metaDescription": "Convert HEIC images to PDF documents. Create PDF files from your iPhone photos instantly.",
+    "heading": "HEIC to PDF Converter",
+    "description": "Transform your HEIC images into PDF documents for easy sharing and archiving. Perfect for creating photo albums or documentation.",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Converting HEIC to PDF is useful when you need to create documents from your photos, share images in a universal format, or archive your pictures in a single file."
+      },
+      {
+        "type": "heading",
+        "text": "Use Cases for HEIC to PDF Conversion"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Create photo albums and portfolios",
+          "Share images via email as single document",
+          "Archive photos for long-term storage",
+          "Print-ready format for documents"
+        ]
+      }
+    ]
+  }
+]
