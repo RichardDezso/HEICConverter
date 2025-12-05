@@ -463,11 +463,11 @@ const Home = () => {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">Batch Processing</CardTitle>
+              <CardTitle className="text-lg">PDF Conversion</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Convert multiple HEIC files at once - downloads as ZIP
+                Convert HEIC to PDF format for easy document sharing
               </p>
             </CardContent>
           </Card>
