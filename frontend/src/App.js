@@ -7,7 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Progress } from "@/components/ui/progress";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { KeywordPage } from "@/components/KeywordPage";
+import { AboutPage, ContactPage, PrivacyPage } from "@/components/StaticPage";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
