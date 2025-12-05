@@ -317,7 +317,7 @@ const Home = () => {
                   <>
                     <Upload className="w-16 h-16 text-muted-foreground" />
                     <div>
-                      <p className="font-medium text-lg">Drop your HEIC files here</p>
+                      <p className="font-medium text-lg">Drop your HEIC/HEIF files here</p>
                       <p className="text-sm text-muted-foreground">or click to browse (supports multiple files)</p>
                     </div>
                   </>
