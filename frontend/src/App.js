@@ -11,6 +11,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { KeywordPage } from "@/components/KeywordPage";
 import { AboutPage, ContactPage, PrivacyPage } from "@/components/StaticPage";
+import { BlogListPage } from "@/components/Blog";
+import { BlogPostPage } from "@/components/BlogPost";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -484,13 +486,17 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             
-            {/* Keyword/SEO Pages */}
-            <Route path="/:slug" element={<KeywordPage />} />
+            {/* Blog Routes */}
+            <Route path="/blog" element={<BlogListPage />} />
+            <Route path="/blog/:id" element={<BlogPostPage />} />
             
             {/* Static Pages */}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
+            
+            {/* Keyword/SEO Pages - Must be last to not override other routes */}
+            <Route path="/:slug" element={<KeywordPage />} />
           </Routes>
         </main>
         <Footer />
