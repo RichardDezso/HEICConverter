@@ -269,7 +269,7 @@ const Home = () => {
             HEIC Converter
           </h1>
           <p className="text-lg text-muted-foreground">
-            Convert your HEIC files to JPEG, PNG, or PDF format instantly
+            Convert your HEIC and HEIF files to JPEG, PNG, or PDF format instantly
           </p>
         </div>
 
