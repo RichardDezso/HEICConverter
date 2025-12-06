@@ -10,7 +10,7 @@ export const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">HEIC Converter</h3>
             <p className="text-sm text-muted-foreground">
-              Free online tool to convert HEIC files to JPEG, PNG, and PDF formats.
+              HEIC Converter Online helps you convert HEIC to PDF, JPG, and PNG quickly and for free. Perfect for iPhone photos, uploads, printing, and sharing.
             </p>
           </div>
 
