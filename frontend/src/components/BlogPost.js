@@ -39,10 +39,45 @@ export const BlogPostPage = () => {
     });
   };
 
+  const renderTextWithLinks = (text) => {
+    // Pattern to match [link text](url) format
+    const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = linkPattern.exec(text)) !== null) {
+      // Add text before the link
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      // Add the link
+      parts.push(
+        <a
+          key={match.index}
+          href={match[2]}
+          className="text-primary hover:underline font-medium"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {match[1]}
+        </a>
+      );
+      lastIndex = match.index + match[0].length;
+    }
+
+    // Add remaining text
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : text;
+  };
+
   const renderContent = (item, index) => {
     switch (item.type) {
       case 'paragraph':
-        return <p key={index} className="text-muted-foreground mb-6 leading-relaxed text-lg">{item.text}</p>;
+        return <p key={index} className="text-muted-foreground mb-6 leading-relaxed text-lg">{renderTextWithLinks(item.text)}</p>;
       case 'heading':
         return <h2 key={index} className="text-3xl font-semibold mb-4 mt-8">{item.text}</h2>;
       case 'list':
@@ -51,7 +86,7 @@ export const BlogPostPage = () => {
             {item.items.map((listItem, i) => (
               <li key={i} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground text-lg">{listItem}</span>
+                <span className="text-muted-foreground text-lg">{renderTextWithLinks(listItem)}</span>
               </li>
             ))}
           </ul>
