@@ -166,7 +166,7 @@ export const BlogPostPage = () => {
             <div className="mb-8 rounded-lg overflow-hidden bg-muted/30">
               <img 
                 src={post.image} 
-                alt={post.title}
+                alt={post.imageAlt || post.title}
                 className="w-full max-h-[500px] object-contain"
               />
             </div>
