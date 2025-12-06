@@ -12,7 +12,32 @@ export const BlogPostPage = () => {
 
   useEffect(() => {
     if (post) {
+      // Set page title
       document.title = `${post.title} - HEIC Converter Blog`;
+      
+      // Set meta description
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', post.excerpt);
+      } else {
+        const meta = document.createElement('meta');
+        meta.name = 'description';
+        meta.content = post.excerpt;
+        document.head.appendChild(meta);
+      }
+      
+      // Set meta keywords if available
+      if (post.keywords) {
+        const metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (metaKeywords) {
+          metaKeywords.setAttribute('content', post.keywords);
+        } else {
+          const meta = document.createElement('meta');
+          meta.name = 'keywords';
+          meta.content = post.keywords;
+          document.head.appendChild(meta);
+        }
+      }
     }
   }, [post]);
 
