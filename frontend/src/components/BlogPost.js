@@ -138,11 +138,11 @@ export const BlogPostPage = () => {
         <article>
           {/* Featured Image */}
           {post.image && (
-            <div className="mb-8 rounded-lg overflow-hidden">
+            <div className="mb-8 rounded-lg overflow-hidden bg-muted/30">
               <img 
                 src={post.image} 
                 alt={post.title}
-                className="w-full h-96 object-cover"
+                className="w-full max-h-[500px] object-contain"
               />
             </div>
           )}
