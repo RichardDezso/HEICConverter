@@ -475,6 +475,144 @@ const Home = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* How It Works Section */}
+        <div className="mt-20">
+          <h2 className="text-4xl font-bold text-center mb-12">How to Convert HEIC to PDF, JPG, or PNG</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card>
+              <CardContent className="pt-6 text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Upload className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Upload your HEIC files</h3>
+                <p className="text-muted-foreground">Drag and drop your photos or click to browse.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6 text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Choose your format</h3>
+                <p className="text-muted-foreground">Select PDF, JPG, or PNG.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6 text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Download className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Download instantly</h3>
+                <p className="text-muted-foreground">Your converted files are ready in a few seconds.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Why Use This Tool Section */}
+        <div className="mt-20">
+          <h2 className="text-4xl font-bold text-center mb-12">Why Use HEIC Converter Online?</h2>
+          <Card className="shadow-lg">
+            <CardContent className="pt-8">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-1">100% free HEIC to PDF, JPG, and PNG conversion</h3>
+                    <p className="text-sm text-muted-foreground">No hidden charges, unlimited conversions</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-1">No software installs or sign-ups</h3>
+                    <p className="text-sm text-muted-foreground">Works directly in your browser</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-1">Fast processing, clean interface</h3>
+                    <p className="text-sm text-muted-foreground">Convert files in seconds with an intuitive design</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-1">Works on Mac, Windows, iPhone, and Android</h3>
+                    <p className="text-sm text-muted-foreground">Universal compatibility across all devices</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-1">Multiple file upload support</h3>
+                    <p className="text-sm text-muted-foreground">Convert multiple HEIC files at once</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-1">Privacy-focused</h3>
+                    <p className="text-sm text-muted-foreground">Your files are processed securely and removed after conversion</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-20 mb-16">
+          <h2 className="text-4xl font-bold text-center mb-12">HEIC Converter FAQ</h2>
+          <div className="space-y-6 max-w-3xl mx-auto">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">What is a HEIC file?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">HEIC is the default image format used by modern iPhones. It saves space while keeping image quality high.</p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">How do I convert HEIC to PDF, JPG, or PNG?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Upload your HEIC files to this tool, choose your format, and download the converted images instantly.</p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Is this HEIC converter free?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Yes. All conversions are free and happen directly in your browser.</p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Can I use this on Windows or Android?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Yes. HEIC Converter Online works on any modern device and browser.</p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Will converting HEIC reduce quality?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">PNG keeps lossless quality; JPG compresses slightly; PDF preserves resolution for printing and sharing.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
     </div>
   );
