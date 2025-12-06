@@ -91,6 +91,33 @@ export const BlogPostPage = () => {
             ))}
           </ul>
         );
+      case 'table':
+        return (
+          <div key={index} className="mb-6 overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-muted">
+                  {item.headers.map((header, i) => (
+                    <th key={i} className="border border-border px-4 py-3 text-left font-semibold">
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {item.rows.map((row, i) => (
+                  <tr key={i} className="border-b border-border hover:bg-muted/50">
+                    {row.map((cell, j) => (
+                      <td key={j} className="border border-border px-4 py-3 text-muted-foreground">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
       default:
         return null;
     }
