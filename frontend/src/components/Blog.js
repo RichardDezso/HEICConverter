@@ -48,7 +48,7 @@ export const BlogListPage = () => {
                   <div className="md:w-80 md:flex-shrink-0 bg-muted/30 flex items-center justify-center">
                     <img 
                       src={post.image} 
-                      alt={post.title}
+                      alt={post.imageAlt || post.title}
                       className="w-full h-48 md:h-full object-contain p-4"
                     />
                   </div>
