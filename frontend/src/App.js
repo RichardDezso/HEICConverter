@@ -450,7 +450,7 @@ const Home = () => {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Convert HEIC to JPEG format for universal compatibility
+                Convert HEIC to JPG format for fast sharing, social uploads, Windows compatibility, and smaller file sizes.
               </p>
             </CardContent>
           </Card>
@@ -460,7 +460,7 @@ const Home = () => {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Convert HEIC to PNG format with lossless quality
+                Convert HEIC to PNG for transparent backgrounds, crisp detail, and high-quality, lossless image output.
               </p>
             </CardContent>
           </Card>
@@ -470,7 +470,7 @@ const Home = () => {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Convert HEIC to PDF format for easy document sharing
+                Convert HEIC to PDF for easy printing, attaching to documents, and sharing photos in a format that opens everywhere.
               </p>
             </CardContent>
           </Card>
