@@ -62,14 +62,14 @@
       {
         "type": "list",
         "items": [
-          "HEIC Converter (heicconverteronline.com) - Completely free and super easy to use. Just upload your HEIC file, hit convert, and download your PDF in seconds.",
+          "[HEIC Converter](https://heicconverteronline.com/) - Completely free and super easy to use. Just upload your HEIC file, hit convert, and download your PDF in seconds.",
           "Zamzar - User-friendly and supports many formats beyond just HEIC. You can convert files quickly without needing to install anything.",
           "CloudConvert - Offers high-quality conversions with lots of settings if you want to customize the output. It also integrates well with cloud storage services like Google Drive."
         ]
       },
       {
         "type": "paragraph",
-        "text": "We recommend using HEIC Converter at https://heicconverteronline.com/ for the fastest and easiest conversion experience. It's completely free, requires no registration, and works directly in your browser!"
+        "text": "We recommend using [HEIC Converter](https://heicconverteronline.com/) for the fastest and easiest conversion experience. It's completely free, requires no registration, and works directly in your browser!"
       },
       {
         "type": "heading",
