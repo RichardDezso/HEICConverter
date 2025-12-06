@@ -268,8 +268,11 @@ const Home = () => {
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
             Free HEIC Converter – Convert HEIC to PDF, JPG, or PNG Online
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground mb-4">
             Upload your HEIC or HEIF photos and convert them to PDF, JPG, or PNG in seconds, no sign-ups, no software, completely free.
+          </p>
+          <p className="text-base text-muted-foreground max-w-3xl mx-auto">
+            HEIC files look great on iPhones, but many devices can't open them. With HEIC Converter Online, you can quickly turn HEIC images into PDF for documents, JPG for universal compatibility, or PNG for lossless quality. Just upload your photos and download the converted files instantly.
           </p>
         </div>
 
