@@ -212,14 +212,15 @@
         "text": "HEIC vs. JPEG: Side-by-Side Comparison"
       },
       {
-        "type": "list",
-        "items": [
-          "File Size - HEIC: ~50% smaller | JPEG: Larger",
-          "Compatibility - HEIC: Limited | JPEG: Universal",
-          "Color Depth - HEIC: 16-bit | JPEG: 8-bit",
-          "Image Quality - HEIC: Higher | JPEG: Lower",
-          "Multi-Image Support - HEIC: Yes | JPEG: No",
-          "Editing Flexibility - HEIC: High | JPEG: Basic"
+        "type": "table",
+        "headers": ["Feature", "HEIC", "JPEG"],
+        "rows": [
+          ["File Size", "~50% smaller", "Larger"],
+          ["Compatibility", "Limited", "Universal"],
+          ["Color Depth", "16-bit", "8-bit"],
+          ["Image Quality", "Higher", "Lower"],
+          ["Multi-Image Support", "Yes", "No"],
+          ["Editing Flexibility", "High", "Basic"]
         ]
       },
       {
