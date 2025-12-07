@@ -183,15 +183,18 @@ frontend:
 
   - task: "Post Editor Component"
     implemented: true
-    working: "NA"
+    working: false
     file: "/app/frontend/src/components/Admin/PostEditor.js"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
         comment: "Need to test post creation and editing at /admin/post/new and /admin/post/edit/{id}"
+      - working: false
+        agent: "testing"
+        comment: "❌ Post editor form renders correctly with all fields (Post ID, Title, Excerpt, Date, Image URL, Alt Text, Keywords, Content JSON), but form submission fails due to API endpoint mismatch. Calls POST /api/admin/blog but backend has POST /api/admin/posts"
 
   - task: "Blog List Page Component"
     implemented: true
