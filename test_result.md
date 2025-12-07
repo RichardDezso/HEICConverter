@@ -222,3 +222,5 @@ test_plan:
 agent_communication:
   - agent: "testing"
     message: "Starting comprehensive admin panel CRUD testing. Will test complete flow: login -> dashboard -> create post -> edit post -> verify public blog -> delete post -> logout"
+  - agent: "testing"
+    message: "CRITICAL ISSUE FOUND: Frontend-Backend API endpoint mismatch. Frontend calls /api/admin/blog/* but backend implements /api/admin/posts/*. This breaks all admin CRUD operations."
