@@ -118,7 +118,7 @@ export const PostEditor = () => {
   };
 
   return (
-    <div className=\"min-h-screen bg-background\">
+    <div className="min-h-screen bg-background\">
       <div className=\"container mx-auto px-4 py-8 max-w-4xl\">
         <Button variant=\"ghost\" onClick={() => navigate('/admin/dashboard')} className=\"mb-6\">
           <ArrowLeft className=\"w-4 h-4 mr-2\" />
