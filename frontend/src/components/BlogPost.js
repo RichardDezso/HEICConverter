@@ -9,7 +9,29 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export const BlogPostPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const post = blogPosts.find(p => p.id === id);
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchPost();
+  }, [id]);
+
+  const fetchPost = async () => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/blog/posts/${id}`);
+      if (response.ok) {
+        const data = await response.json();
+        setPost(data);
+      } else {
+        setPost(null);
+      }
+    } catch (error) {
+      console.error('Error fetching post:', error);
+      setPost(null);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (post) {
