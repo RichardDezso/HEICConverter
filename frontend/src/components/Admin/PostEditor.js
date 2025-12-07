@@ -46,7 +46,7 @@ export const PostEditor = () => {
       const headers = getAuthHeader();
       if (!headers) return;
 
-      const response = await fetch(`${BACKEND_URL}/api/admin/blog/${id}`, {
+      const response = await fetch(`${BACKEND_URL}/api/admin/posts/${id}`, {
         headers: { 'Authorization': headers.Authorization }
       });
 
@@ -93,8 +93,8 @@ export const PostEditor = () => {
       };
 
       const url = isEdit
-        ? `${BACKEND_URL}/api/admin/blog/${id}`
-        : `${BACKEND_URL}/api/admin/blog`;
+        ? `${BACKEND_URL}/api/admin/posts/${id}`
+        : `${BACKEND_URL}/api/admin/posts`;
 
       const response = await fetch(url, {
         method: isEdit ? 'PUT' : 'POST',

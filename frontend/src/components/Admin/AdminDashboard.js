@@ -30,7 +30,7 @@ export const AdminDashboard = () => {
       const headers = getAuthHeader();
       if (!headers) return;
 
-      const response = await fetch(`${BACKEND_URL}/api/admin/blog`, { headers });
+      const response = await fetch(`${BACKEND_URL}/api/admin/posts`, { headers });
       
       if (response.ok) {
         const data = await response.json();
@@ -54,7 +54,7 @@ export const AdminDashboard = () => {
       const headers = getAuthHeader();
       if (!headers) return;
 
-      const response = await fetch(`${BACKEND_URL}/api/admin/blog/${postId}`, {
+      const response = await fetch(`${BACKEND_URL}/api/admin/posts/${postId}`, {
         method: 'DELETE',
         headers
       });
