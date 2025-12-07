@@ -62,7 +62,15 @@ export const BlogPostPage = () => {
         }
       }
     }
-  }, [post]);
+  }, [post, loading]);
+
+  if (loading) {
+    return (
+      <div className=\"min-h-screen bg-background flex items-center justify-center\">
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
   if (!post) {
     return (
