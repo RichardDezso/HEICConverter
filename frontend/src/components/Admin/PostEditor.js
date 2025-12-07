@@ -145,7 +145,7 @@ export const PostEditor = () => {
       StarterKit.configure({
         link: false, // Disable default link extension
       }),
-      Underline,
+      UnderlineExtension,
       Link.configure({
         openOnClick: false,
         HTMLAttributes: {
