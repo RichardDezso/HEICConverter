@@ -187,28 +187,22 @@ frontend:
         agent: "testing"
         comment: "✅ Dashboard now working perfectly. Loads posts correctly from GET /api/admin/posts, displays post list with edit/delete buttons, New Post and Logout buttons functional. Navigation to post editor works correctly."
 
-  - task: "Post Editor Component"
+  - task: "Rich Text Editor Component"
     implemented: true
-    working: true
+    working: "NA"
     file: "/app/frontend/src/components/Admin/PostEditor.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
       - working: "NA"
         agent: "testing"
-        comment: "Need to test post creation and editing at /admin/post/new and /admin/post/edit/{id}"
-      - working: false
-        agent: "testing"
-        comment: "❌ Post editor form renders correctly with all fields (Post ID, Title, Excerpt, Date, Image URL, Alt Text, Keywords, Content JSON), but form submission fails due to API endpoint mismatch. Calls POST /api/admin/blog but backend has POST /api/admin/posts"
-      - working: true
-        agent: "testing"
-        comment: "✅ Post editor now fully functional. Form renders correctly with all fields, POST/PUT requests to /api/admin/posts work correctly, successful redirects to dashboard after save, proper validation for duplicate post IDs. Both create and edit modes working."
+        comment: "Need to test new TipTap rich text editor implementation with toolbar (Bold, Italic, Lists, Links, Headings). Test complete workflow: create post with formatted content, verify on public blog, edit existing posts, convert JSON to HTML format."
 
   - task: "Blog List Page Component"
     implemented: true
     working: true
-    file: "/app/frontend/src/components/Blog.js"
+    file: "/app/frontend/src/components/BlogPost.js"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
@@ -222,11 +216,11 @@ frontend:
 
   - task: "Blog Post Page Component"
     implemented: true
-    working: true
+    working: "NA"
     file: "/app/frontend/src/components/BlogPost.js"
     stuck_count: 0
-    priority: "high"
-    needs_retesting: false
+    priority: "medium"
+    needs_retesting: true
     status_history:
       - working: "NA"
         agent: "testing"
@@ -234,6 +228,9 @@ frontend:
       - working: true
         agent: "testing"
         comment: "✅ Individual blog post page component correctly implemented. API calls match backend endpoints (GET /api/blog/posts/{id}). Shows proper 404 handling when post not found."
+      - working: "NA"
+        agent: "testing"
+        comment: "Need to retest with new HTML content format from rich text editor. Verify proper rendering of formatted content (bold, italic, lists, links, headings)."
 
 metadata:
   created_by: "testing_agent"
