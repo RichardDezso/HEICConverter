@@ -27,6 +27,74 @@ const Home = () => {
   const [convertedFiles, setConvertedFiles] = useState([]);
   const [batchMode, setBatchMode] = useState(false);
 
+  // Add FAQ Schema for SEO
+  useEffect(() => {
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a HEIC file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HEIC is the default image format used by modern iPhones. It saves space while keeping image quality high."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert HEIC to PDF, JPG, or PNG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upload your HEIC files to this tool, choose your format, and download the converted images instantly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this HEIC converter free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All conversions are free and happen directly in your browser."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this on Windows or Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. HEIC Converter Online works on any modern device and browser."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will converting HEIC reduce quality?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PNG keeps lossless quality; JPG compresses slightly; PDF preserves resolution for printing and sharing."
+          }
+        }
+      ]
+    };
+
+    // Create or update script tag for FAQ schema
+    let script = document.getElementById('faq-schema');
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'faq-schema';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(faqSchema);
+
+    // Cleanup function to remove script when component unmounts
+    return () => {
+      const existingScript = document.getElementById('faq-schema');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   const handleFileSelect = (event) => {
     const files = Array.from(event.target.files);
     const validFiles = files.filter(file => 
