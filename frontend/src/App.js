@@ -13,6 +13,9 @@ import { KeywordPage } from "@/components/KeywordPage";
 import { AboutPage, ContactPage, PrivacyPage } from "@/components/StaticPage";
 import { BlogListPage } from "@/components/Blog";
 import { BlogPostPage } from "@/components/BlogPost";
+import { AdminLogin } from "@/components/Admin/AdminLogin";
+import { AdminDashboard } from "@/components/Admin/AdminDashboard";
+import { PostEditor } from "@/components/Admin/PostEditor";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
