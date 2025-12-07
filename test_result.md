@@ -168,15 +168,18 @@ frontend:
 
   - task: "Admin Dashboard Component"
     implemented: true
-    working: "NA"
+    working: false
     file: "/app/frontend/src/components/Admin/AdminDashboard.js"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
         comment: "Need to test dashboard at /admin/dashboard - verify blog posts list, New Post and Logout buttons"
+      - working: false
+        agent: "testing"
+        comment: "❌ Dashboard UI loads correctly with 'Blog Admin' heading, 'New Post' and 'Logout' buttons, but fails to load posts due to API endpoint mismatch. Calls GET /api/admin/blog but backend has GET /api/admin/posts"
 
   - task: "Post Editor Component"
     implemented: true
