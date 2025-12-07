@@ -8,15 +8,40 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export const BlogListPage = () => {
   const navigate = useNavigate();
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     document.title = 'Blog - HEIC Converter';
+    fetchPosts();
   }, []);
+
+  const fetchPosts = async () => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/blog/posts`);
+      if (response.ok) {
+        const data = await response.json();
+        setBlogPosts(data);
+      }
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Sort posts by date (newest first)
   const sortedPosts = [...blogPosts].sort((a, b) => 
     new Date(b.date) - new Date(a.date)
   );
+
+  if (loading) {
+    return (
+      <div className=\"bg-background min-h-screen flex items-center justify-center\">
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
