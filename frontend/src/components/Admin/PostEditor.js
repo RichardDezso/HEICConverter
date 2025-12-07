@@ -10,6 +10,7 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import UnderlineExtension from '@tiptap/extension-underline';
 import Link from '@tiptap/extension-link';
+import './editor.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
