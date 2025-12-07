@@ -216,7 +216,22 @@ export const BlogPostPage = () => {
           {/* Post Content */}
           <Card className="shadow-lg">
             <CardContent className="pt-8">
-              {post.content.map((item, index) => renderContent(item, index))}
+              {typeof post.content === 'string' ? (
+                // New format: HTML content
+                <div 
+                  className="prose prose-lg max-w-none 
+                  prose-headings:font-bold prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8
+                  prose-p:text-muted-foreground prose-p:mb-6 prose-p:leading-relaxed prose-p:text-lg
+                  prose-ul:space-y-3 prose-ul:mb-6 prose-li:text-muted-foreground prose-li:text-lg
+                  prose-ol:space-y-3 prose-ol:mb-6
+                  prose-a:text-primary prose-a:hover:underline prose-a:font-medium
+                  prose-strong:font-semibold prose-em:italic"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
+              ) : (
+                // Old format: JSON array
+                post.content.map((item, index) => renderContent(item, index))
+              )}
             </CardContent>
           </Card>
 
