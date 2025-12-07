@@ -255,3 +255,5 @@ agent_communication:
     message: "ISSUE RESOLVED: API endpoint mismatch has been fixed. Frontend now correctly calls /api/admin/posts endpoints. Fixed backend ObjectId serialization issue that was causing 500 errors on post creation."
   - agent: "testing"
     message: "COMPREHENSIVE TESTING COMPLETED: All admin panel CRUD operations are now working correctly. Login, post creation, editing, public blog display, and deletion all function as expected. API endpoints are properly aligned between frontend and backend."
+  - agent: "testing"
+    message: "STARTING RICH TEXT EDITOR TESTING: Testing new TipTap rich text editor implementation. Will test complete workflow: admin login -> create post with rich formatting -> verify public display -> edit existing posts -> test JSON to HTML conversion -> cleanup test data."
