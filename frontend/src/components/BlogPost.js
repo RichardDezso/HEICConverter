@@ -34,7 +34,7 @@ export const BlogPostPage = () => {
   };
 
   useEffect(() => {
-    if (post) {
+    if (post && !loading) {
       // Set page title
       document.title = `${post.title} - HEIC Converter Blog`;
       
