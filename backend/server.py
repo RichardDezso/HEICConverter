@@ -352,7 +352,9 @@ async def update_post(post_id: str, post: dict, authorized: bool = Depends(verif
     result = await db.blog_posts.replace_one({"id": post_id}, post)
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Post not found")
-    return {"message": "Post updated successfully", "post": post}
+    # Return the updated post without MongoDB's _id field
+    updated_post = await db.blog_posts.find_one({"id": post_id}, {"_id": 0})
+    return {"message": "Post updated successfully", "post": updated_post}
 
 @api_router.delete("/admin/posts/{post_id}")
 async def delete_post(post_id: str, authorized: bool = Depends(verify_admin)):
