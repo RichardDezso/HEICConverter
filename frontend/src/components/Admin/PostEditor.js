@@ -157,7 +157,7 @@ export const PostEditor = () => {
     content: '<p>Start writing your blog post here...</p>',
     editorProps: {
       attributes: {
-        class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none focus:outline-none min-h-[300px] p-4',
+        class: 'focus:outline-none',
       },
     },
   });
