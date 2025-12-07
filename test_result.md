@@ -137,15 +137,18 @@ backend:
 
   - task: "Public Blog API"
     implemented: true
-    working: "NA"
+    working: true
     file: "server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
         comment: "Need to test public blog endpoints: GET /api/blog/posts, GET /api/blog/posts/{id}"
+      - working: true
+        agent: "testing"
+        comment: "✅ Public blog API endpoints correctly implemented: GET /api/blog/posts and GET /api/blog/posts/{id}. Frontend calls match backend implementation."
 
 frontend:
   - task: "Admin Login Component"
