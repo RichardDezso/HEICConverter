@@ -234,14 +234,15 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Admin Login Component"
+    - "Admin Blog CRUD API"
     - "Admin Dashboard Component"
     - "Post Editor Component"
-    - "Blog List Page Component"
-    - "Blog Post Page Component"
-  stuck_tasks: []
-  test_all: true
-  test_priority: "sequential"
+  stuck_tasks:
+    - "Admin Blog CRUD API"
+    - "Admin Dashboard Component"
+    - "Post Editor Component"
+  test_all: false
+  test_priority: "stuck_first"
 
 agent_communication:
   - agent: "testing"
