@@ -122,15 +122,18 @@ backend:
 
   - task: "Admin Blog CRUD API"
     implemented: true
-    working: "NA"
+    working: false
     file: "server.py"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
         comment: "Need to test admin blog endpoints: GET /api/admin/blog, POST /api/admin/blog, PUT /api/admin/blog/{id}, DELETE /api/admin/blog/{id}"
+      - working: false
+        agent: "testing"
+        comment: "❌ CRITICAL: API endpoint mismatch. Backend implements /api/admin/posts/* but frontend calls /api/admin/blog/*. All admin CRUD operations return 404. Backend has: GET/POST/PUT/DELETE /api/admin/posts/{id}"
 
   - task: "Public Blog API"
     implemented: true
