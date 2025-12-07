@@ -343,7 +343,9 @@ async def create_post(post: dict, authorized: bool = Depends(verify_admin)):
         raise HTTPException(status_code=400, detail="Post with this ID already exists")
     
     await db.blog_posts.insert_one(post)
-    return {"message": "Post created successfully", "post": post}
+    # Return the post without MongoDB's _id field
+    created_post = await db.blog_posts.find_one({"id": post["id"]}, {"_id": 0})
+    return {"message": "Post created successfully", "post": created_post}
 
 @api_router.put("/admin/posts/{post_id}")
 async def update_post(post_id: str, post: dict, authorized: bool = Depends(verify_admin)):
