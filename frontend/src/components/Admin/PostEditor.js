@@ -86,7 +86,7 @@ const MenuBar = ({ editor }) => {
         }`}
         title="Underline (Ctrl+U)"
       >
-        <Underline className="w-4 h-4" />
+        <UnderlineIcon className="w-4 h-4" />
       </button>
       <div className="w-px bg-border mx-1" />
       <button
