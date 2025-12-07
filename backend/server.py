@@ -298,6 +298,81 @@ async def convert_heic_batch(
         )
 
 
+# Admin endpoints
+security = HTTPBasic()
+
+def verify_admin(credentials: HTTPBasicCredentials = Depends(security)):
+    password_file = ROOT_DIR / '.admin_password'
+    correct_password = password_file.read_text().strip()
+    
+    is_correct = secrets.compare_digest(
+        credentials.password.encode("utf8"),
+        correct_password.encode("utf8")
+    )
+    
+    if not is_correct:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid credentials",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    return True
+
+@api_router.post("/admin/login")
+async def admin_login(credentials: HTTPBasicCredentials = Depends(security)):
+    verify_admin(credentials)
+    return {"message": "Login successful"}
+
+@api_router.get("/admin/posts")
+async def get_all_posts(authorized: bool = Depends(verify_admin)):
+    posts = await db.blog_posts.find({}, {"_id": 0}).to_list(1000)
+    return posts
+
+@api_router.get("/admin/posts/{post_id}")
+async def get_post(post_id: str, authorized: bool = Depends(verify_admin)):
+    post = await db.blog_posts.find_one({"id": post_id}, {"_id": 0})
+    if not post:
+        raise HTTPException(status_code=404, detail="Post not found")
+    return post
+
+@api_router.post("/admin/posts")
+async def create_post(post: dict, authorized: bool = Depends(verify_admin)):
+    # Check if post with this ID already exists
+    existing = await db.blog_posts.find_one({"id": post["id"]})
+    if existing:
+        raise HTTPException(status_code=400, detail="Post with this ID already exists")
+    
+    await db.blog_posts.insert_one(post)
+    return {"message": "Post created successfully", "post": post}
+
+@api_router.put("/admin/posts/{post_id}")
+async def update_post(post_id: str, post: dict, authorized: bool = Depends(verify_admin)):
+    result = await db.blog_posts.replace_one({"id": post_id}, post)
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Post not found")
+    return {"message": "Post updated successfully", "post": post}
+
+@api_router.delete("/admin/posts/{post_id}")
+async def delete_post(post_id: str, authorized: bool = Depends(verify_admin)):
+    result = await db.blog_posts.delete_one({"id": post_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Post not found")
+    return {"message": "Post deleted successfully"}
+
+# Public blog endpoints (no auth required)
+@api_router.get("/blog/posts")
+async def get_blog_posts():
+    posts = await db.blog_posts.find({}, {"_id": 0}).to_list(1000)
+    return posts
+
+@api_router.get("/blog/posts/{post_id}")
+async def get_blog_post(post_id: str):
+    post = await db.blog_posts.find_one({"id": post_id}, {"_id": 0})
+    if not post:
+        raise HTTPException(status_code=404, detail="Post not found")
+    return post
+
+
 # Include the router in the main app
 app.include_router(api_router)
 
