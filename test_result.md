@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Test the admin panel CRUD operations for blog posts with complete flow from login to logout"
+user_problem_statement: "Test the new rich text editor in the admin panel with complete workflow including creation, editing, and public display verification"
 
 backend:
   - task: "Admin Authentication API"
