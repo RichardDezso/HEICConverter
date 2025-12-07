@@ -634,6 +634,12 @@ function App() {
             <Route path="/blog" element={<BlogListPage />} />
             <Route path="/blog/:id" element={<BlogPostPage />} />
             
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/post/new" element={<PostEditor />} />
+            <Route path="/admin/post/edit/:id" element={<PostEditor />} />
+            
             {/* Static Pages */}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
