@@ -46,7 +46,7 @@ export const PostEditor = () => {
       const headers = getAuthHeader();
       if (!headers) return;
 
-      const response = await fetch(`${BACKEND_URL}/api/admin/posts/${id}`, {
+      const response = await fetch(`${BACKEND_URL}/api/admin/blog/${id}`, {
         headers: { 'Authorization': headers.Authorization }
       });
 
@@ -93,8 +93,8 @@ export const PostEditor = () => {
       };
 
       const url = isEdit
-        ? `${BACKEND_URL}/api/admin/posts/${id}`
-        : `${BACKEND_URL}/api/admin/posts`;
+        ? `${BACKEND_URL}/api/admin/blog/${id}`
+        : `${BACKEND_URL}/api/admin/blog`;
 
       const response = await fetch(url, {
         method: isEdit ? 'PUT' : 'POST',
@@ -118,10 +118,10 @@ export const PostEditor = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background\">
-      <div className=\"container mx-auto px-4 py-8 max-w-4xl\">
-        <Button variant=\"ghost\" onClick={() => navigate('/admin/dashboard')} className=\"mb-6\">
-          <ArrowLeft className=\"w-4 h-4 mr-2\" />
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <Button variant="ghost" onClick={() => navigate('/admin/dashboard')} className="mb-6">
+          <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Dashboard
         </Button>
 
@@ -130,20 +130,20 @@ export const PostEditor = () => {
             <CardTitle>{isEdit ? 'Edit Post' : 'Create New Post'}</CardTitle>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className=\"space-y-4\">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className=\"text-sm font-medium mb-2 block\">Post ID (URL slug)</label>
+                <label className="text-sm font-medium mb-2 block">Post ID (URL slug)</label>
                 <Input
                   value={formData.id}
                   onChange={(e) => setFormData({ ...formData, id: e.target.value })}
-                  placeholder=\"my-blog-post-title\"
+                  placeholder="my-blog-post-title"
                   required
                   disabled={isEdit}
                 />
               </div>
 
               <div>
-                <label className=\"text-sm font-medium mb-2 block\">Title</label>
+                <label className="text-sm font-medium mb-2 block">Title</label>
                 <Input
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
@@ -152,7 +152,7 @@ export const PostEditor = () => {
               </div>
 
               <div>
-                <label className=\"text-sm font-medium mb-2 block\">Excerpt</label>
+                <label className="text-sm font-medium mb-2 block">Excerpt</label>
                 <Textarea
                   value={formData.excerpt}
                   onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
@@ -162,9 +162,9 @@ export const PostEditor = () => {
               </div>
 
               <div>
-                <label className=\"text-sm font-medium mb-2 block\">Date</label>
+                <label className="text-sm font-medium mb-2 block">Date</label>
                 <Input
-                  type=\"date\"
+                  type="date"
                   value={formData.date}
                   onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                   required
@@ -172,16 +172,16 @@ export const PostEditor = () => {
               </div>
 
               <div>
-                <label className=\"text-sm font-medium mb-2 block\">Image URL (optional)</label>
+                <label className="text-sm font-medium mb-2 block">Image URL (optional)</label>
                 <Input
                   value={formData.image}
                   onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder=\"https://...\"
+                  placeholder="https://..."
                 />
               </div>
 
               <div>
-                <label className=\"text-sm font-medium mb-2 block\">Image Alt Text (optional)</label>
+                <label className="text-sm font-medium mb-2 block">Image Alt Text (optional)</label>
                 <Input
                   value={formData.imageAlt}
                   onChange={(e) => setFormData({ ...formData, imageAlt: e.target.value })}
@@ -189,35 +189,35 @@ export const PostEditor = () => {
               </div>
 
               <div>
-                <label className=\"text-sm font-medium mb-2 block\">Keywords (optional)</label>
+                <label className="text-sm font-medium mb-2 block">Keywords (optional)</label>
                 <Input
                   value={formData.keywords}
                   onChange={(e) => setFormData({ ...formData, keywords: e.target.value })}
-                  placeholder=\"keyword1, keyword2, keyword3\"
+                  placeholder="keyword1, keyword2, keyword3"
                 />
               </div>
 
               <div>
-                <label className=\"text-sm font-medium mb-2 block\">Content (JSON format)</label>
+                <label className="text-sm font-medium mb-2 block">Content (JSON format)</label>
                 <Textarea
                   value={formData.contentText}
                   onChange={(e) => setFormData({ ...formData, contentText: e.target.value })}
                   rows={15}
-                  className=\"font-mono text-sm\"
-                  placeholder='[{\"type\": \"paragraph\", \"text\": \"Your content here...\"}]'
+                  className="font-mono text-sm"
+                  placeholder='[{"type": "paragraph", "text": "Your content here..."}]'
                   required
                 />
-                <p className=\"text-xs text-muted-foreground mt-2\">
-                  Use JSON format. Example: [{'{\"type\": \"paragraph\", \"text\": \"Hello\"}'}]
+                <p className="text-xs text-muted-foreground mt-2">
+                  Use JSON format. Example: [{'{"type": "paragraph", "text": "Hello"}'}]
                 </p>
               </div>
 
-              <div className=\"flex gap-3\">
-                <Button type=\"submit\" disabled={loading}>
-                  <Save className=\"w-4 h-4 mr-2\" />
+              <div className="flex gap-3">
+                <Button type="submit" disabled={loading}>
+                  <Save className="w-4 h-4 mr-2" />
                   {loading ? 'Saving...' : 'Save Post'}
                 </Button>
-                <Button type=\"button\" variant=\"outline\" onClick={() => navigate('/admin/dashboard')}>
+                <Button type="button" variant="outline" onClick={() => navigate('/admin/dashboard')}>
                   Cancel
                 </Button>
               </div>

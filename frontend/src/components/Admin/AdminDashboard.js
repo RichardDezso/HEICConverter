@@ -30,7 +30,7 @@ export const AdminDashboard = () => {
       const headers = getAuthHeader();
       if (!headers) return;
 
-      const response = await fetch(`${BACKEND_URL}/api/admin/posts`, { headers });
+      const response = await fetch(`${BACKEND_URL}/api/admin/blog`, { headers });
       
       if (response.ok) {
         const data = await response.json();
@@ -54,7 +54,7 @@ export const AdminDashboard = () => {
       const headers = getAuthHeader();
       if (!headers) return;
 
-      const response = await fetch(`${BACKEND_URL}/api/admin/posts/${postId}`, {
+      const response = await fetch(`${BACKEND_URL}/api/admin/blog/${postId}`, {
         method: 'DELETE',
         headers
       });
@@ -85,29 +85,29 @@ export const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background\">
-      <div className=\"container mx-auto px-4 py-8 max-w-6xl\">
-        <div className=\"flex justify-between items-center mb-8\">
-          <h1 className=\"text-4xl font-bold\">Blog Admin</h1>
-          <div className=\"flex gap-3\">
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-4xl font-bold">Blog Admin</h1>
+          <div className="flex gap-3">
             <Button onClick={() => navigate('/admin/post/new')}>
-              <Plus className=\"w-4 h-4 mr-2\" />
+              <Plus className="w-4 h-4 mr-2" />
               New Post
             </Button>
-            <Button variant=\"outline\" onClick={handleLogout}>
-              <LogOut className=\"w-4 h-4 mr-2\" />
+            <Button variant="outline" onClick={handleLogout}>
+              <LogOut className="w-4 h-4 mr-2" />
               Logout
             </Button>
           </div>
         </div>
 
-        <div className=\"space-y-4\">
+        <div className="space-y-4">
           {posts.length === 0 ? (
             <Card>
-              <CardContent className=\"pt-8 pb-8 text-center\">
-                <p className=\"text-muted-foreground\">No blog posts yet. Create your first one!</p>
-                <Button className=\"mt-4\" onClick={() => navigate('/admin/post/new')}>
-                  <Plus className=\"w-4 h-4 mr-2\" />
+              <CardContent className="pt-8 pb-8 text-center">
+                <p className="text-muted-foreground">No blog posts yet. Create your first one!</p>
+                <Button className="mt-4" onClick={() => navigate('/admin/post/new')}>
+                  <Plus className="w-4 h-4 mr-2" />
                   Create First Post
                 </Button>
               </CardContent>
@@ -115,29 +115,29 @@ export const AdminDashboard = () => {
           ) : (
             posts.map((post) => (
               <Card key={post.id}>
-                <CardContent className=\"pt-6\">
-                  <div className=\"flex items-start justify-between\">
-                    <div className=\"flex-1\">
-                      <h3 className=\"text-xl font-semibold mb-2\">{post.title}</h3>
-                      <p className=\"text-sm text-muted-foreground mb-2\">{post.excerpt}</p>
-                      <p className=\"text-xs text-muted-foreground\">
+                <CardContent className="pt-6">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
+                      <p className="text-sm text-muted-foreground mb-2">{post.excerpt}</p>
+                      <p className="text-xs text-muted-foreground">
                         Date: {post.date} • ID: {post.id}
                       </p>
                     </div>
-                    <div className=\"flex gap-2 ml-4\">
+                    <div className="flex gap-2 ml-4">
                       <Button
-                        variant=\"outline\"
-                        size=\"sm\"
+                        variant="outline"
+                        size="sm"
                         onClick={() => navigate(`/admin/post/edit/${post.id}`)}
                       >
-                        <Edit className=\"w-4 h-4\" />
+                        <Edit className="w-4 h-4" />
                       </Button>
                       <Button
-                        variant=\"outline\"
-                        size=\"sm\"
+                        variant="outline"
+                        size="sm"
                         onClick={() => handleDelete(post.id)}
                       >
-                        <Trash2 className=\"w-4 h-4\" />
+                        <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>

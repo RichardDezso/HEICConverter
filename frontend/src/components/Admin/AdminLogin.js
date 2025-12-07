@@ -44,27 +44,27 @@ export const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4\">
-      <Card className=\"w-full max-w-md\">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className=\"text-2xl\">Admin Login</CardTitle>
+          <CardTitle className="text-2xl">Admin Login</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleLogin} className=\"space-y-4\">
+          <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className=\"text-sm font-medium mb-2 block\">Password</label>
+              <label className="text-sm font-medium mb-2 block">Password</label>
               <Input
-                type=\"password\"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder=\"Enter admin password\"
+                placeholder="Enter admin password"
                 required
               />
             </div>
-            <Button type=\"submit\" className=\"w-full\" disabled={loading}>
+            <Button type="submit" className="w-full" disabled={loading}>
               {loading ? 'Logging in...' : 'Login'}
             </Button>
-            <p className=\"text-sm text-muted-foreground text-center mt-4\">
+            <p className="text-sm text-muted-foreground text-center mt-4">
               Default password: admin123change
             </p>
           </form>
