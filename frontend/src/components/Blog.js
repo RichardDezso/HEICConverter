@@ -37,7 +37,7 @@ export const BlogListPage = () => {
 
   if (loading) {
     return (
-      <div className=\"bg-background min-h-screen flex items-center justify-center\">
+      <div className="bg-background min-h-screen flex items-center justify-center">
         <p>Loading...</p>
       </div>
     );
