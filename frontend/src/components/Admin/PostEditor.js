@@ -5,10 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
-import { ArrowLeft, Save, Bold, Italic, List, ListOrdered, Link as LinkIcon, Heading2, Heading3, Underline } from 'lucide-react';
+import { ArrowLeft, Save, Bold, Italic, List, ListOrdered, Link as LinkIcon, Heading2, Heading3, Underline as UnderlineIcon } from 'lucide-react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import Underline from '@tiptap/extension-underline';
+import UnderlineExtension from '@tiptap/extension-underline';
 import Link from '@tiptap/extension-link';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
