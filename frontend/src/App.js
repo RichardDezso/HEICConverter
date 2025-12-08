@@ -16,6 +16,7 @@ import { BlogPostPage } from "@/components/BlogPost";
 import { AdminLogin } from "@/components/Admin/AdminLogin";
 import { AdminDashboard } from "@/components/Admin/AdminDashboard";
 import { PostEditor } from "@/components/Admin/PostEditor";
+import { DisplayAd } from "@/components/AdUnit";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
