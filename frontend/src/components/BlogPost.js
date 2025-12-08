@@ -220,12 +220,17 @@ export const BlogPostPage = () => {
                 // New format: HTML content
                 <div 
                   className="prose prose-lg max-w-none 
-                  prose-headings:font-bold prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8
+                  prose-headings:font-bold 
+                  prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-10
+                  prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-8
+                  prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-6
+                  prose-h4:text-xl prose-h4:mb-2 prose-h4:mt-4
                   prose-p:text-muted-foreground prose-p:mb-6 prose-p:leading-relaxed prose-p:text-lg
                   prose-ul:space-y-3 prose-ul:mb-6 prose-li:text-muted-foreground prose-li:text-lg
                   prose-ol:space-y-3 prose-ol:mb-6
                   prose-a:text-primary prose-a:hover:underline prose-a:font-medium
-                  prose-strong:font-semibold prose-em:italic"
+                  prose-strong:font-semibold prose-em:italic prose-u:underline
+                  prose-img:rounded-lg prose-img:my-8 prose-img:shadow-md"
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
               ) : (
