@@ -23,10 +23,13 @@ export const PostEditor = () => {
     date: new Date().toISOString().split('T')[0],
     image: '',
     imageAlt: '',
-    keywords: ''
+    keywords: '',
+    metaDescription: '',
+    focusKeyword: ''
   });
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [seoScore, setSeoScore] = useState(0);
   
   const quillRef = useRef(null);
   const editorRef = useRef(null);
