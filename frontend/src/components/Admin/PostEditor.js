@@ -140,6 +140,54 @@ export const PostEditor = () => {
     return html;
   };
 
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error('Image too large! Maximum size is 5MB');
+      return;
+    }
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast.error('Please upload an image file');
+      return;
+    }
+
+    setUploading(true);
+
+    try {
+      const headers = getAuthHeader();
+      if (!headers) return;
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch(`${BACKEND_URL}/api/admin/upload-image`, {
+        method: 'POST',
+        headers: {
+          'Authorization': headers.Authorization
+        },
+        body: formData
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setFormData(prev => ({ ...prev, image: data.url }));
+        toast.success('Image uploaded successfully!');
+      } else {
+        toast.error('Failed to upload image');
+      }
+    } catch (error) {
+      console.error('Upload error:', error);
+      toast.error('Failed to upload image');
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
