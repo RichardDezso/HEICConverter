@@ -35,6 +35,99 @@ export const PostEditor = () => {
   const editorRef = useRef(null);
   const fileInputRef = useRef(null);
 
+  // SEO Analysis
+  useEffect(() => {
+    if (formData.title || formData.excerpt || quillRef.current) {
+      calculateSeoScore();
+    }
+  }, [formData.title, formData.excerpt, formData.focusKeyword, formData.metaDescription]);
+
+  const calculateSeoScore = () => {
+    let score = 0;
+    const content = quillRef.current ? quillRef.current.getText() : '';
+    const focusKeyword = formData.focusKeyword.toLowerCase();
+    
+    // Title checks (30 points)
+    if (formData.title.length >= 40 && formData.title.length <= 60) score += 10;
+    if (focusKeyword && formData.title.toLowerCase().includes(focusKeyword)) score += 20;
+    
+    // Meta description (20 points)
+    if (formData.metaDescription.length >= 120 && formData.metaDescription.length <= 160) score += 10;
+    if (focusKeyword && formData.metaDescription.toLowerCase().includes(focusKeyword)) score += 10;
+    
+    // Excerpt (10 points)
+    if (formData.excerpt.length >= 100 && formData.excerpt.length <= 160) score += 10;
+    
+    // Content checks (25 points)
+    if (content.length >= 300) score += 10; // Minimum content length
+    if (focusKeyword && content.toLowerCase().includes(focusKeyword)) score += 15;
+    
+    // Image (10 points)
+    if (formData.image) score += 5;
+    if (formData.imageAlt) score += 5;
+    
+    // URL slug (5 points)
+    if (formData.id && formData.id.length <= 50) score += 5;
+    
+    setSeoScore(score);
+  };
+
+  const getSeoColor = () => {
+    if (seoScore >= 80) return 'text-green-600';
+    if (seoScore >= 60) return 'text-yellow-600';
+    return 'text-red-600';
+  };
+
+  const getSeoRecommendations = () => {
+    const recommendations = [];
+    const content = quillRef.current ? quillRef.current.getText() : '';
+    const focusKeyword = formData.focusKeyword.toLowerCase();
+    
+    if (!formData.focusKeyword) {
+      recommendations.push('⚠️ Add a focus keyword for better targeting');
+    }
+    
+    if (formData.title.length < 40) {
+      recommendations.push('⚠️ Title is too short (aim for 40-60 characters)');
+    } else if (formData.title.length > 60) {
+      recommendations.push('⚠️ Title is too long (aim for 40-60 characters)');
+    }
+    
+    if (!formData.metaDescription) {
+      recommendations.push('⚠️ Add a meta description (120-160 characters)');
+    } else if (formData.metaDescription.length < 120) {
+      recommendations.push('⚠️ Meta description is too short');
+    } else if (formData.metaDescription.length > 160) {
+      recommendations.push('⚠️ Meta description is too long (will be cut off in search results)');
+    }
+    
+    if (focusKeyword && !formData.title.toLowerCase().includes(focusKeyword)) {
+      recommendations.push('⚠️ Include focus keyword in title');
+    }
+    
+    if (focusKeyword && formData.metaDescription && !formData.metaDescription.toLowerCase().includes(focusKeyword)) {
+      recommendations.push('⚠️ Include focus keyword in meta description');
+    }
+    
+    if (content.length < 300) {
+      recommendations.push('⚠️ Content is too short (aim for 300+ words)');
+    }
+    
+    if (!formData.image) {
+      recommendations.push('⚠️ Add a featured image');
+    }
+    
+    if (formData.image && !formData.imageAlt) {
+      recommendations.push('⚠️ Add alt text to your image for accessibility and SEO');
+    }
+    
+    if (recommendations.length === 0) {
+      recommendations.push('✅ Great! Your post is well-optimized for SEO');
+    }
+    
+    return recommendations;
+  };
+
   const getAuthHeader = () => {
     const credentials = sessionStorage.getItem('adminAuth');
     if (!credentials) {
