@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
-import { ArrowLeft, Save } from 'lucide-react';
+import { ArrowLeft, Save, Upload, X } from 'lucide-react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 
@@ -26,9 +26,11 @@ export const PostEditor = () => {
     keywords: ''
   });
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
   
   const quillRef = useRef(null);
   const editorRef = useRef(null);
+  const fileInputRef = useRef(null);
 
   const getAuthHeader = () => {
     const credentials = sessionStorage.getItem('adminAuth');
