@@ -296,12 +296,72 @@ export const PostEditor = () => {
               </div>
 
               <div>
-                <label className="text-sm font-medium mb-2 block">Image URL (optional)</label>
-                <Input
-                  value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder="https://images.unsplash.com/..."
+                <label className="text-sm font-medium mb-2 block">Featured Image (optional)</label>
+                
+                {/* Hidden file input */}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="hidden"
                 />
+                
+                {/* Image preview or upload button */}
+                {formData.image ? (
+                  <div className="space-y-2">
+                    <div className="relative border rounded-md p-2 flex items-center gap-3">
+                      <img 
+                        src={formData.image} 
+                        alt="Preview" 
+                        className="w-20 h-20 object-cover rounded"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm text-muted-foreground truncate">{formData.image}</p>
+                      </div>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setFormData({ ...formData, image: '' })}
+                      >
+                        <X className="w-4 h-4" />
+                      </Button>
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Or paste a URL:
+                    </p>
+                    <Input
+                      value={formData.image}
+                      onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                      placeholder="https://images.unsplash.com/..."
+                    />
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => fileInputRef.current?.click()}
+                      disabled={uploading}
+                      className="w-full"
+                    >
+                      <Upload className="w-4 h-4 mr-2" />
+                      {uploading ? 'Uploading...' : 'Upload Image'}
+                    </Button>
+                    <p className="text-xs text-muted-foreground text-center">
+                      Or paste image URL:
+                    </p>
+                    <Input
+                      value={formData.image}
+                      onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                      placeholder="https://images.unsplash.com/..."
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Max file size: 5MB • Formats: JPG, PNG, GIF, WebP
+                    </p>
+                  </div>
+                )}
               </div>
 
               <div>
