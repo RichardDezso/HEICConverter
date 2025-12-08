@@ -145,6 +145,7 @@ export const PostEditor = () => {
     return html;
   };
 
+  // Handler for featured image upload
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -191,6 +192,70 @@ export const PostEditor = () => {
     } finally {
       setUploading(false);
     }
+  };
+
+  // Handler for inserting images into Quill editor
+  const imageHandler = () => {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.click();
+
+    input.onchange = async () => {
+      const file = input.files[0];
+      if (!file) return;
+
+      // Validate file
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('Image too large! Maximum size is 5MB');
+        return;
+      }
+
+      if (!file.type.startsWith('image/')) {
+        toast.error('Please upload an image file');
+        return;
+      }
+
+      // Show loading toast
+      const loadingToast = toast.loading('Uploading image...');
+
+      try {
+        const headers = getAuthHeader();
+        if (!headers) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const response = await fetch(`${BACKEND_URL}/api/admin/upload-image`, {
+          method: 'POST',
+          headers: {
+            'Authorization': headers.Authorization
+          },
+          body: formData
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          
+          // Insert image into editor at cursor position
+          const range = quillRef.current.getSelection();
+          quillRef.current.insertEmbed(range.index, 'image', data.url);
+          
+          // Move cursor after image
+          quillRef.current.setSelection(range.index + 1);
+          
+          toast.dismiss(loadingToast);
+          toast.success('Image inserted!');
+        } else {
+          toast.dismiss(loadingToast);
+          toast.error('Failed to upload image');
+        }
+      } catch (error) {
+        console.error('Upload error:', error);
+        toast.dismiss(loadingToast);
+        toast.error('Failed to upload image');
+      }
+    };
   };
 
   const handleSubmit = async (e) => {
