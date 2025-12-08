@@ -376,6 +376,78 @@ async def get_blog_post(post_id: str):
         raise HTTPException(status_code=404, detail="Post not found")
     return post
 
+# SEO endpoints
+@api_router.get("/sitemap.xml")
+async def get_sitemap():
+    """Generate dynamic sitemap with all pages"""
+    from datetime import datetime
+    
+    # Get all blog posts
+    posts = await db.blog_posts.find({}, {"_id": 0, "id": 1, "date": 1}).to_list(1000)
+    
+    # Static pages
+    static_pages = [
+        {"loc": "/", "priority": "1.0"},
+        {"loc": "/about", "priority": "0.8"},
+        {"loc": "/contact", "priority": "0.8"},
+        {"loc": "/privacy", "priority": "0.5"},
+        {"loc": "/blog", "priority": "0.9"},
+    ]
+    
+    # Keyword pages
+    keyword_pages = [
+        {"loc": "/heic-to-jpg", "priority": "0.9"},
+        {"loc": "/heic-to-png", "priority": "0.9"},
+        {"loc": "/heic-to-pdf", "priority": "0.9"},
+    ]
+    
+    # Build XML
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    
+    # Add static pages
+    for page in static_pages:
+        xml += '  <url>\n'
+        xml += f'    <loc>https://heicconverter.online{page["loc"]}</loc>\n'
+        xml += f'    <changefreq>weekly</changefreq>\n'
+        xml += f'    <priority>{page["priority"]}</priority>\n'
+        xml += '  </url>\n'
+    
+    # Add keyword pages
+    for page in keyword_pages:
+        xml += '  <url>\n'
+        xml += f'    <loc>https://heicconverter.online{page["loc"]}</loc>\n'
+        xml += f'    <changefreq>monthly</changefreq>\n'
+        xml += f'    <priority>{page["priority"]}</priority>\n'
+        xml += '  </url>\n'
+    
+    # Add blog posts
+    for post in posts:
+        xml += '  <url>\n'
+        xml += f'    <loc>https://heicconverter.online/blog/{post["id"]}</loc>\n'
+        xml += f'    <lastmod>{post.get("date", datetime.now().strftime("%Y-%m-%d"))}</lastmod>\n'
+        xml += f'    <changefreq>monthly</changefreq>\n'
+        xml += f'    <priority>0.7</priority>\n'
+        xml += '  </url>\n'
+    
+    xml += '</urlset>'
+    
+    return Response(content=xml, media_type="application/xml")
+
+@api_router.get("/robots.txt")
+async def get_robots():
+    """Generate robots.txt file"""
+    robots = """User-agent: *
+Allow: /
+
+Sitemap: https://heicconverter.online/api/sitemap.xml
+
+# Disallow admin routes
+Disallow: /admin
+Disallow: /admin/*
+"""
+    return Response(content=robots, media_type="text/plain")
+
 
 # Include the router in the main app
 app.include_router(api_router)
