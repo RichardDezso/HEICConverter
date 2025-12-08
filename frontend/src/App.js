@@ -635,6 +635,11 @@ const Home = () => {
           </Card>
         </div>
 
+        {/* Ad Placement - Above FAQ */}
+        <div className="mt-20 mb-16 max-w-4xl mx-auto">
+          <DisplayAd slot="YOUR_AD_SLOT_ID" className="mb-12" />
+        </div>
+
         {/* FAQ Section */}
         <div className="mt-20 mb-16">
           <h2 className="text-4xl font-bold text-center mb-12">HEIC Converter FAQ</h2>
