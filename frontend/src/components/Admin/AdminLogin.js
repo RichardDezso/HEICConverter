@@ -64,9 +64,6 @@ export const AdminLogin = () => {
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? 'Logging in...' : 'Login'}
             </Button>
-            <p className="text-sm text-muted-foreground text-center mt-4">
-              Default password: admin123change
-            </p>
           </form>
         </CardContent>
       </Card>
