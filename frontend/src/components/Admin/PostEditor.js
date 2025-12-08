@@ -45,10 +45,10 @@ export const PostEditor = () => {
   useEffect(() => {
     if (editorRef.current && !quillRef.current) {
       const toolbarOptions = [
-        [{ 'header': [2, 3, false] }],
+        [{ 'header': [1, 2, 3, 4, false] }],
         ['bold', 'italic', 'underline'],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        ['link'],
+        ['link', 'image'],
         ['clean']
       ];
 
@@ -56,7 +56,12 @@ export const PostEditor = () => {
         theme: 'snow',
         placeholder: 'Write your blog post content here...',
         modules: {
-          toolbar: toolbarOptions
+          toolbar: {
+            container: toolbarOptions,
+            handlers: {
+              image: imageHandler
+            }
+          }
         }
       });
 
