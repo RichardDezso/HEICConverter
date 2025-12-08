@@ -382,6 +382,9 @@ async def get_sitemap():
     """Generate dynamic sitemap with all pages"""
     from datetime import datetime
     
+    # Get frontend URL from environment
+    frontend_url = os.environ.get('FRONTEND_URL', 'https://heicconverter.online')
+    
     # Get all blog posts
     posts = await db.blog_posts.find({}, {"_id": 0, "id": 1, "date": 1}).to_list(1000)
     
@@ -408,7 +411,7 @@ async def get_sitemap():
     # Add static pages
     for page in static_pages:
         xml += '  <url>\n'
-        xml += f'    <loc>https://heicconverter.online{page["loc"]}</loc>\n'
+        xml += f'    <loc>{frontend_url}{page["loc"]}</loc>\n'
         xml += f'    <changefreq>weekly</changefreq>\n'
         xml += f'    <priority>{page["priority"]}</priority>\n'
         xml += '  </url>\n'
@@ -416,7 +419,7 @@ async def get_sitemap():
     # Add keyword pages
     for page in keyword_pages:
         xml += '  <url>\n'
-        xml += f'    <loc>https://heicconverter.online{page["loc"]}</loc>\n'
+        xml += f'    <loc>{frontend_url}{page["loc"]}</loc>\n'
         xml += f'    <changefreq>monthly</changefreq>\n'
         xml += f'    <priority>{page["priority"]}</priority>\n'
         xml += '  </url>\n'
@@ -424,7 +427,7 @@ async def get_sitemap():
     # Add blog posts
     for post in posts:
         xml += '  <url>\n'
-        xml += f'    <loc>https://heicconverter.online/blog/{post["id"]}</loc>\n'
+        xml += f'    <loc>{frontend_url}/blog/{post["id"]}</loc>\n'
         xml += f'    <lastmod>{post.get("date", datetime.now().strftime("%Y-%m-%d"))}</lastmod>\n'
         xml += f'    <changefreq>monthly</changefreq>\n'
         xml += f'    <priority>0.7</priority>\n'
@@ -437,10 +440,13 @@ async def get_sitemap():
 @api_router.get("/robots.txt")
 async def get_robots():
     """Generate robots.txt file"""
-    robots = """User-agent: *
+    # Get frontend URL from environment
+    frontend_url = os.environ.get('FRONTEND_URL', 'https://heicconverter.online')
+    
+    robots = f"""User-agent: *
 Allow: /
 
-Sitemap: https://heicconverter.online/api/sitemap.xml
+Sitemap: {frontend_url}/api/sitemap.xml
 
 # Disallow admin routes
 Disallow: /admin
