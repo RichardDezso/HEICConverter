@@ -304,12 +304,18 @@ security = HTTPBasic()
 
 def verify_admin(credentials: HTTPBasicCredentials = Depends(security)):
     password_file = ROOT_DIR / '.admin_password'
-    correct_password = password_file.read_text().strip()
+    stored_password_hash = password_file.read_text().strip()
     
-    is_correct = secrets.compare_digest(
-        credentials.password.encode("utf8"),
-        correct_password.encode("utf8")
-    )
+    # Check if password is hashed (starts with $2b$ for bcrypt)
+    if stored_password_hash.startswith('$2b$'):
+        # Verify hashed password
+        is_correct = bcrypt.verify(credentials.password, stored_password_hash)
+    else:
+        # Fallback to plain text comparison (for backward compatibility)
+        is_correct = secrets.compare_digest(
+            credentials.password.encode("utf8"),
+            stored_password_hash.encode("utf8")
+        )
     
     if not is_correct:
         raise HTTPException(
