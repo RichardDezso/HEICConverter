@@ -461,6 +461,61 @@ Disallow: /admin/*
 """
     return Response(content=robots, media_type="text/plain")
 
+# Image upload endpoint
+@api_router.post("/admin/upload-image")
+async def upload_image(
+    file: UploadFile = File(...),
+    authorized: bool = Depends(verify_admin)
+):
+    """Upload an image for blog posts"""
+    import hashlib
+    from datetime import datetime
+    
+    # Validate file type
+    allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp']
+    if file.content_type not in allowed_types:
+        raise HTTPException(status_code=400, detail="Invalid file type. Only images allowed.")
+    
+    # Create uploads directory if it doesn't exist
+    uploads_dir = ROOT_DIR / 'uploads'
+    uploads_dir.mkdir(exist_ok=True)
+    
+    # Generate unique filename
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    file_extension = Path(file.filename).suffix
+    
+    # Create a hash of the file content for uniqueness
+    file_content = await file.read()
+    file_hash = hashlib.md5(file_content).hexdigest()[:8]
+    
+    filename = f"{timestamp}_{file_hash}{file_extension}"
+    file_path = uploads_dir / filename
+    
+    # Save file
+    with open(file_path, 'wb') as f:
+        f.write(file_content)
+    
+    # Return the URL
+    frontend_url = os.environ.get('FRONTEND_URL', 'https://heicconverter.online')
+    image_url = f"{frontend_url}/api/uploads/{filename}"
+    
+    return {
+        "success": True,
+        "url": image_url,
+        "filename": filename
+    }
+
+# Serve uploaded images
+@api_router.get("/uploads/{filename}")
+async def serve_uploaded_image(filename: str):
+    """Serve uploaded images"""
+    file_path = ROOT_DIR / 'uploads' / filename
+    
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail="Image not found")
+    
+    return FileResponse(file_path)
+
 
 # Include the router in the main app
 app.include_router(api_router)
