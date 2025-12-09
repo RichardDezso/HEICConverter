@@ -704,9 +704,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             
-            {/* Blog Routes */}
-            <Route path="/blog" element={<BlogListPage />} />
-            <Route path="/blog/:id" element={<BlogPostPage />} />
+            {/* Guides Routes */}
+            <Route path="/guides" element={<BlogListPage />} />
+            <Route path="/guides/:id" element={<BlogPostPage />} />
+            
+            {/* Redirect old blog URLs to guides */}
+            <Route path="/blog" element={<Navigate to="/guides" replace />} />
+            <Route path="/blog/:id" element={<Navigate to="/guides/:id" replace />} />
             
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminLogin />} />
