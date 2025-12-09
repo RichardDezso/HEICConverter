@@ -35,6 +35,8 @@ export const BlogListPage = () => {
   const sortedPosts = [...blogPosts].sort((a, b) => 
     new Date(b.date) - new Date(a.date)
   );
+  
+  console.log(`Rendering ${sortedPosts.length} sorted blog posts`);
 
   if (loading) {
     return (
