@@ -72,7 +72,7 @@ export const BlogListPage = () => {
             <Card 
               key={post.id} 
               className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
-              onClick={() => navigate(`/blog/${post.id}`)}
+              onClick={() => navigate(`/guides/${post.id}`)}
             >
               <div className="md:flex">
                 {post.image && (
