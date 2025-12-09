@@ -14,8 +14,6 @@ export const KeywordPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   
-  console.log('KeywordPage - slug:', slug);
-  
   // Check if this is one of our converter guide pages
   const converterPages = {
     'batch-convert-heic-to-pdf': BatchConvertPage,
@@ -25,16 +23,12 @@ export const KeywordPage = () => {
     'heic-pdf-troubleshooting': TroubleshootingPage
   };
   
-  console.log('Checking if slug matches converter pages:', !!converterPages[slug]);
-  
   // If slug matches a converter guide page, render that component
   if (converterPages[slug]) {
-    console.log('Rendering converter page for:', slug);
     const ConverterPage = converterPages[slug];
     return <ConverterPage />;
   }
   
-  console.log('Not a converter page, checking keyword pages');
   const page = keywordPages.find(p => p.slug === slug);
 
   useEffect(() => {
