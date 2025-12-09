@@ -19,7 +19,7 @@ export const BlogPostPage = () => {
 
   const fetchPost = async () => {
     try {
-      const response = await fetch(`${BACKEND_URL}/api/blog/posts/${id}`);
+      const response = await fetch(`${BACKEND_URL}/api/guides/posts/${id}`);
       if (response.ok) {
         const data = await response.json();
         setPost(data);
