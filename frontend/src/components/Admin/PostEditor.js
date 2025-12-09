@@ -539,16 +539,77 @@ export const PostEditor = () => {
                 />
               </div>
 
-              <div>
-                <label className="text-sm font-medium mb-2 block">Keywords (optional)</label>
-                <Input
-                  value={formData.keywords}
-                  onChange={(e) => setFormData({ ...formData, keywords: e.target.value })}
-                  placeholder="keyword1, keyword2, keyword3"
-                />
-              </div>
+              {/* SEO Section */}
+              <Card className="mt-6 bg-blue-50/50 border-blue-200">
+                <CardHeader>
+                  <CardTitle className="text-lg flex items-center justify-between">
+                    <span>🎯 SEO Optimization</span>
+                    <span className={`text-2xl font-bold ${getSeoColor()}`}>
+                      {seoScore}/100
+                    </span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">
+                      Focus Keyword <span className="text-red-500">*</span>
+                    </label>
+                    <Input
+                      value={formData.focusKeyword}
+                      onChange={(e) => setFormData({ ...formData, focusKeyword: e.target.value })}
+                      placeholder="e.g., heic to jpg converter"
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Main keyword you want to rank for in Google
+                    </p>
+                  </div>
 
-              <div>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">
+                      Meta Description <span className="text-red-500">*</span>
+                      <span className="ml-2 text-xs text-muted-foreground">
+                        ({formData.metaDescription.length}/160)
+                      </span>
+                    </label>
+                    <Textarea
+                      value={formData.metaDescription}
+                      onChange={(e) => setFormData({ ...formData, metaDescription: e.target.value })}
+                      rows={2}
+                      placeholder="Brief description that appears in Google search results (120-160 characters)"
+                      maxLength={160}
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">
+                      This appears in Google search results. Include your focus keyword!
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Additional Keywords</label>
+                    <Input
+                      value={formData.keywords}
+                      onChange={(e) => setFormData({ ...formData, keywords: e.target.value })}
+                      placeholder="keyword1, keyword2, keyword3"
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Related keywords (comma-separated)
+                    </p>
+                  </div>
+
+                  {/* SEO Recommendations */}
+                  <div className="mt-4 p-4 bg-white rounded-md border">
+                    <h4 className="font-semibold mb-2">📊 SEO Checklist:</h4>
+                    <ul className="space-y-1 text-sm">
+                      {getSeoRecommendations().map((rec, index) => (
+                        <li key={index} className="text-muted-foreground">
+                          {rec}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <div className="mt-6">
                 <label className="text-sm font-medium mb-2 block">Content</label>
                 <div className="border rounded-md overflow-hidden bg-white" style={{ minHeight: '400px' }}>
                   <div ref={editorRef} />
