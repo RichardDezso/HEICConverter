@@ -374,7 +374,16 @@ async def delete_post(post_id: str, authorized: bool = Depends(verify_admin)):
 @api_router.get("/blog/posts")
 async def get_blog_posts():
     posts = await db.blog_posts.find({}, {"_id": 0}).to_list(1000)
-    return posts
+    # Return response with no-cache headers
+    return Response(
+        content=json.dumps(posts, default=str),
+        media_type="application/json",
+        headers={
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0"
+        }
+    )
 
 @api_router.get("/blog/posts/{post_id}")
 async def get_blog_post(post_id: str):
