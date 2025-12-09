@@ -21,6 +21,7 @@ export const BlogListPage = () => {
       const response = await fetch(`${BACKEND_URL}/api/blog/posts`);
       if (response.ok) {
         const data = await response.json();
+        console.log(`Fetched ${data.length} blog posts from API`);
         setBlogPosts(data);
       }
     } catch (error) {
