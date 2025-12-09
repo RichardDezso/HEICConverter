@@ -35,29 +35,32 @@ export const BlogPostPage = () => {
 
   useEffect(() => {
     if (post && !loading) {
-      // Set page title
-      document.title = `${post.title} - HEIC Converter Blog`;
+      // Set page title (include focus keyword if available)
+      const titleSuffix = post.focusKeyword ? ` | ${post.focusKeyword}` : '';
+      document.title = `${post.title}${titleSuffix} - HEIC Converter Blog`;
       
-      // Set meta description
+      // Set meta description (use custom meta description if available, fallback to excerpt)
+      const description = post.metaDescription || post.excerpt;
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
-        metaDescription.setAttribute('content', post.excerpt);
+        metaDescription.setAttribute('content', description);
       } else {
         const meta = document.createElement('meta');
         meta.name = 'description';
-        meta.content = post.excerpt;
+        meta.content = description;
         document.head.appendChild(meta);
       }
       
       // Set meta keywords if available
-      if (post.keywords) {
+      if (post.keywords || post.focusKeyword) {
+        const keywords = [post.focusKeyword, post.keywords].filter(Boolean).join(', ');
         const metaKeywords = document.querySelector('meta[name="keywords"]');
         if (metaKeywords) {
-          metaKeywords.setAttribute('content', post.keywords);
+          metaKeywords.setAttribute('content', keywords);
         } else {
           const meta = document.createElement('meta');
           meta.name = 'keywords';
-          meta.content = post.keywords;
+          meta.content = keywords;
           document.head.appendChild(meta);
         }
       }
