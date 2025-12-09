@@ -371,9 +371,10 @@ async def delete_post(post_id: str, authorized: bool = Depends(verify_admin)):
         raise HTTPException(status_code=404, detail="Post not found")
     return {"message": "Post deleted successfully"}
 
-# Public blog endpoints (no auth required)
-@api_router.get("/blog/posts")
-async def get_blog_posts():
+# Public guides endpoints (no auth required)
+
+@api_router.get("/guides/posts")
+async def get_guides_posts():
     posts = await db.blog_posts.find({}, {"_id": 0}).to_list(1000)
     # Return response with no-cache headers
     return Response(
@@ -386,12 +387,21 @@ async def get_blog_posts():
         }
     )
 
-@api_router.get("/blog/posts/{post_id}")
-async def get_blog_post(post_id: str):
+@api_router.get("/guides/posts/{post_id}")
+async def get_guide_post(post_id: str):
     post = await db.blog_posts.find_one({"id": post_id}, {"_id": 0})
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
     return post
+
+# Legacy blog endpoint redirects (for SEO/backward compatibility)
+@api_router.get("/blog/posts")
+async def get_blog_posts_redirect():
+    return await get_guides_posts()
+
+@api_router.get("/blog/posts/{post_id}")
+async def get_blog_post_redirect(post_id: str):
+    return await get_guide_post(post_id)
 
 # SEO endpoints
 @api_router.get("/sitemap.xml")
