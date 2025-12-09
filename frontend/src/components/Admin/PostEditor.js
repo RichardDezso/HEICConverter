@@ -202,7 +202,9 @@ export const PostEditor = () => {
           date: post.date,
           image: post.image || '',
           imageAlt: post.imageAlt || '',
-          keywords: post.keywords || ''
+          keywords: post.keywords || '',
+          metaDescription: post.metaDescription || '',
+          focusKeyword: post.focusKeyword || ''
         });
 
         // Set editor content
