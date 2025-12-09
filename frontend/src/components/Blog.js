@@ -20,7 +20,7 @@ export const BlogListPage = () => {
     try {
       // Add cache busting parameter
       const timestamp = new Date().getTime();
-      const response = await fetch(`${BACKEND_URL}/api/blog/posts?v=${timestamp}`);
+      const response = await fetch(`${BACKEND_URL}/api/guides/posts?v=${timestamp}`);
       if (response.ok) {
         const data = await response.json();
         console.log(`Fetched ${data.length} blog posts from API`);
