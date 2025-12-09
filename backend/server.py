@@ -421,7 +421,7 @@ async def get_sitemap():
         {"loc": "/about", "priority": "0.8"},
         {"loc": "/contact", "priority": "0.8"},
         {"loc": "/privacy", "priority": "0.5"},
-        {"loc": "/blog", "priority": "0.9"},
+        {"loc": "/guides", "priority": "0.9"},
     ]
     
     # Keyword pages
