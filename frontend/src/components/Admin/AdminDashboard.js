@@ -105,7 +105,7 @@ export const AdminDashboard = () => {
           {posts.length === 0 ? (
             <Card>
               <CardContent className="pt-8 pb-8 text-center">
-                <p className="text-muted-foreground">No blog posts yet. Create your first one!</p>
+                <p className="text-muted-foreground">No guides yet. Create your first one!</p>
                 <Button className="mt-4" onClick={() => navigate('/admin/post/new')}>
                   <Plus className="w-4 h-4 mr-2" />
                   Create First Post
