@@ -17,11 +17,6 @@ import { AdminLogin } from "@/components/Admin/AdminLogin";
 import { AdminDashboard } from "@/components/Admin/AdminDashboard";
 import { PostEditor } from "@/components/Admin/PostEditor";
 import { DisplayAd } from "@/components/AdUnit";
-import { BatchConvertPage } from "@/components/pages/BatchConvertPage";
-import { QualityGuidePage } from "@/components/pages/QualityGuidePage";
-import { BusinessPage } from "@/components/pages/BusinessPage";
-import { ComparisonPage } from "@/components/pages/ComparisonPage";
-import { TroubleshootingPage } from "@/components/pages/TroubleshootingPage";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
