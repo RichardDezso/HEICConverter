@@ -19,6 +19,7 @@ import img2pdf
 import zipfile
 import io
 import secrets
+import json
 from passlib.hash import bcrypt
 
 # Register HEIF opener with Pillow
