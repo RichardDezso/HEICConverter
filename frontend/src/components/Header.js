@@ -28,10 +28,10 @@ export const Header = () => {
               Converter
             </Link>
             <Link 
-              to="/blog" 
+              to="/guides" 
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
-              Blog
+              Guides
             </Link>
             <Link 
               to="/heic-to-jpg" 
