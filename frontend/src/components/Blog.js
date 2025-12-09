@@ -61,9 +61,9 @@ export const BlogListPage = () => {
     <div className="bg-background min-h-screen">
       <div className="container mx-auto px-4 py-12 max-w-5xl">
         <div className="mb-12">
-          <h1 className="text-5xl font-bold mb-4">Blog</h1>
+          <h1 className="text-5xl font-bold mb-4">HEIC Conversion Guides</h1>
           <p className="text-xl text-muted-foreground">
-            Tips, guides, and insights about HEIC conversion and image formats
+            Expert guides and tutorials for converting HEIC files to PDF, JPG, and PNG
           </p>
         </div>
 
