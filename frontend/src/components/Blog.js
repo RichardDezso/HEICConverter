@@ -12,7 +12,7 @@ export const BlogListPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = 'Blog - HEIC Converter';
+    document.title = 'Guides - HEIC Converter';
     fetchPosts();
   }, []);
 
