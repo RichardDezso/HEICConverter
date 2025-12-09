@@ -92,7 +92,7 @@ export const AdminDashboard = () => {
           <div className="flex gap-3">
             <Button onClick={() => navigate('/admin/post/new')}>
               <Plus className="w-4 h-4 mr-2" />
-              New Post
+              New Guide
             </Button>
             <Button variant="outline" onClick={handleLogout}>
               <LogOut className="w-4 h-4 mr-2" />
