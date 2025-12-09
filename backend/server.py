@@ -431,14 +431,6 @@ async def get_sitemap():
         xml += f'    <priority>{page["priority"]}</priority>\n'
         xml += '  </url>\n'
     
-    # Add converter guide pages
-    for page in guide_pages:
-        xml += '  <url>\n'
-        xml += f'    <loc>{frontend_url}{page["loc"]}</loc>\n'
-        xml += f'    <changefreq>monthly</changefreq>\n'
-        xml += f'    <priority>{page["priority"]}</priority>\n'
-        xml += '  </url>\n'
-    
     # Add blog posts
     for post in posts:
         xml += '  <url>\n'
