@@ -451,10 +451,10 @@ async def get_sitemap():
         xml += f'    <priority>{page["priority"]}</priority>\n'
         xml += '  </url>\n'
     
-    # Add blog posts
+    # Add guide posts
     for post in posts:
         xml += '  <url>\n'
-        xml += f'    <loc>{frontend_url}/blog/{post["id"]}</loc>\n'
+        xml += f'    <loc>{frontend_url}/guides/{post["id"]}</loc>\n'
         xml += f'    <lastmod>{post.get("date", datetime.now().strftime("%Y-%m-%d"))}</lastmod>\n'
         xml += f'    <changefreq>monthly</changefreq>\n'
         xml += f'    <priority>0.7</priority>\n'
