@@ -724,6 +724,13 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             
+            {/* Converter Guide Pages - SEO optimized standalone pages */}
+            <Route path="/batch-convert-heic-to-pdf" element={<BatchConvertPage />} />
+            <Route path="/heic-pdf-quality-guide" element={<QualityGuidePage />} />
+            <Route path="/heic-pdf-business" element={<BusinessPage />} />
+            <Route path="/heic-vs-jpeg-pdf" element={<ComparisonPage />} />
+            <Route path="/heic-pdf-troubleshooting" element={<TroubleshootingPage />} />
+            
             {/* Keyword/SEO Pages - Must be last to not override other routes */}
             <Route path="/:slug" element={<KeywordPage />} />
           </Routes>
