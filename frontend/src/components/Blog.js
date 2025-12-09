@@ -112,7 +112,7 @@ export const BlogListPage = () => {
         {sortedPosts.length === 0 && (
           <Card>
             <CardContent className="pt-12 pb-12 text-center">
-              <p className="text-muted-foreground">No blog posts yet. Check back soon!</p>
+              <p className="text-muted-foreground">No guides yet. Check back soon!</p>
             </CardContent>
           </Card>
         )}
