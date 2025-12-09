@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, CheckCircle } from 'lucide-react';
+import './BlogPost.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
