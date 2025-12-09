@@ -375,6 +375,8 @@ export const PostEditor = () => {
         image: formData.image || undefined,
         imageAlt: formData.imageAlt || undefined,
         keywords: formData.keywords || undefined,
+        metaDescription: formData.metaDescription || undefined,
+        focusKeyword: formData.focusKeyword || undefined,
         content: htmlContent,
         contentType: 'html'
       };
