@@ -17,6 +17,8 @@ class BlogPost(BaseModel):
     image: Optional[str] = None
     imageAlt: Optional[str] = None
     keywords: Optional[str] = None
+    metaDescription: Optional[str] = None
+    focusKeyword: Optional[str] = None
     content: List[BlogPostContent]
 
 class BlogPostCreate(BaseModel):
@@ -27,6 +29,8 @@ class BlogPostCreate(BaseModel):
     image: Optional[str] = None
     imageAlt: Optional[str] = None
     keywords: Optional[str] = None
+    metaDescription: Optional[str] = None
+    focusKeyword: Optional[str] = None
     content: List[BlogPostContent]
 
 class AdminLogin(BaseModel):
