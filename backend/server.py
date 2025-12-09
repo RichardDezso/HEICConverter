@@ -411,15 +411,6 @@ async def get_sitemap():
         {"loc": "/heic-to-pdf", "priority": "0.9"},
     ]
     
-    # Converter guide pages (SEO-optimized standalone pages)
-    guide_pages = [
-        {"loc": "/batch-convert-heic-to-pdf", "priority": "0.9"},
-        {"loc": "/heic-pdf-quality-guide", "priority": "0.9"},
-        {"loc": "/heic-pdf-business", "priority": "0.8"},
-        {"loc": "/heic-vs-jpeg-pdf", "priority": "0.9"},
-        {"loc": "/heic-pdf-troubleshooting", "priority": "0.8"},
-    ]
-    
     # Build XML
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
     xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
