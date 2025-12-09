@@ -4,10 +4,31 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
 import keywordPages from '@/data/keywordPages.json';
+import { BatchConvertPage } from '@/components/pages/BatchConvertPage';
+import { QualityGuidePage } from '@/components/pages/QualityGuidePage';
+import { BusinessPage } from '@/components/pages/BusinessPage';
+import { ComparisonPage } from '@/components/pages/ComparisonPage';
+import { TroubleshootingPage } from '@/components/pages/TroubleshootingPage';
 
 export const KeywordPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  
+  // Check if this is one of our converter guide pages
+  const converterPages = {
+    'batch-convert-heic-to-pdf': BatchConvertPage,
+    'heic-pdf-quality-guide': QualityGuidePage,
+    'heic-pdf-business': BusinessPage,
+    'heic-vs-jpeg-pdf': ComparisonPage,
+    'heic-pdf-troubleshooting': TroubleshootingPage
+  };
+  
+  // If slug matches a converter guide page, render that component
+  if (converterPages[slug]) {
+    const ConverterPage = converterPages[slug];
+    return <ConverterPage />;
+  }
+  
   const page = keywordPages.find(p => p.slug === slug);
 
   useEffect(() => {
