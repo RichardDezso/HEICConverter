@@ -38,7 +38,7 @@ export const BlogPostPage = () => {
     if (post && !loading) {
       // Set page title (include focus keyword if available)
       const titleSuffix = post.focusKeyword ? ` | ${post.focusKeyword}` : '';
-      document.title = `${post.title}${titleSuffix} - HEIC Converter Blog`;
+      document.title = `${post.title}${titleSuffix} - HEIC Converter`;
       
       // Set meta description (use custom meta description if available, fallback to excerpt)
       const description = post.metaDescription || post.excerpt;
