@@ -108,7 +108,7 @@ export const AdminDashboard = () => {
                 <p className="text-muted-foreground">No guides yet. Create your first one!</p>
                 <Button className="mt-4" onClick={() => navigate('/admin/post/new')}>
                   <Plus className="w-4 h-4 mr-2" />
-                  Create First Post
+                  Create First Guide
                 </Button>
               </CardContent>
             </Card>
