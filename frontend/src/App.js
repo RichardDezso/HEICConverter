@@ -349,6 +349,11 @@ const Home = () => {
           </p>
         </div>
 
+        {/* Ad Placement - Homepage Top Banner */}
+        <div className="my-8">
+          <DisplayAd slot="8498373823" />
+        </div>
+
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle>Upload HEIC Files</CardTitle>
