@@ -244,6 +244,11 @@ export const BlogPostPage = () => {
             </CardContent>
           </Card>
 
+          {/* Ad Placement - Guide Content Bottom */}
+          <div className="my-8">
+            <DisplayAd slot="1585481113" />
+          </div>
+
           {/* CTA Section */}
           <div className="mt-12">
             <Card className="bg-primary/5 border-primary/20">
