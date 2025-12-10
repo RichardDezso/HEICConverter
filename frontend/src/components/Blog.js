@@ -60,7 +60,7 @@ export const BlogListPage = () => {
 
   return (
     <div className="bg-background min-h-screen">
-      <div className="container mx-auto px-4 py-12 max-w-5xl">
+      <div className="container mx-auto px-4 py-12 max-w-7xl">
         <div className="mb-12">
           <h1 className="text-5xl font-bold mb-4">HEIC Conversion Guides</h1>
           <p className="text-xl text-muted-foreground">
@@ -68,7 +68,9 @@ export const BlogListPage = () => {
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="grid lg:grid-cols-[1fr_300px] gap-8">
+          {/* Main Content */}
+          <div className="space-y-6">
           {sortedPosts.map((post) => (
             <Card 
               key={post.id} 
