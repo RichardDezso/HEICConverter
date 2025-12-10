@@ -110,15 +110,23 @@ export const BlogListPage = () => {
               </div>
             </Card>
           ))}
-        </div>
 
-        {sortedPosts.length === 0 && (
-          <Card>
-            <CardContent className="pt-12 pb-12 text-center">
-              <p className="text-muted-foreground">No guides yet. Check back soon!</p>
-            </CardContent>
-          </Card>
-        )}
+          {sortedPosts.length === 0 && (
+            <Card>
+              <CardContent className="pt-12 pb-12 text-center">
+                <p className="text-muted-foreground">No guides yet. Check back soon!</p>
+              </CardContent>
+            </Card>
+          )}
+          </div>
+
+          {/* Sidebar with Ad */}
+          <div className="hidden lg:block">
+            <div className="sticky top-4">
+              <DisplayAd slot="6645417862" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
