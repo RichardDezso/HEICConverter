@@ -218,6 +218,11 @@ export const BlogPostPage = () => {
             <p className="text-xl text-muted-foreground">{post.excerpt}</p>
           </div>
 
+          {/* Ad Placement - Guide Content Top */}
+          <div className="my-8">
+            <DisplayAd slot="5872210483" />
+          </div>
+
           {/* Post Content */}
           <Card className="shadow-lg">
             <CardContent className="pt-8">
