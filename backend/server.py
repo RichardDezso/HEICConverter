@@ -462,7 +462,15 @@ async def get_sitemap():
     
     xml += '</urlset>'
     
-    return Response(content=xml, media_type="application/xml")
+    return Response(
+        content=xml, 
+        media_type="application/xml",
+        headers={
+            "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0",
+            "Pragma": "no-cache",
+            "Expires": "0"
+        }
+    )
 
 @api_router.get("/robots.txt")
 async def get_robots():
