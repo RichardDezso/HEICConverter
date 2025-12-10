@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Calendar, ArrowRight } from 'lucide-react';
+import { DisplayAd } from '@/components/AdUnit';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
