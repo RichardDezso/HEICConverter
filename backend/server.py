@@ -410,7 +410,7 @@ async def get_sitemap():
     from datetime import datetime
     
     # Get frontend URL from environment
-    frontend_url = os.environ.get('FRONTEND_URL', 'https://heicconverter.online')
+    frontend_url = os.environ.get('FRONTEND_URL', 'https://heicconverteronline.com')
     
     # Get all blog posts
     posts = await db.blog_posts.find({}, {"_id": 0, "id": 1, "date": 1}).to_list(1000)
@@ -476,7 +476,7 @@ async def get_sitemap():
 async def get_robots():
     """Generate robots.txt file"""
     # Get frontend URL from environment
-    frontend_url = os.environ.get('FRONTEND_URL', 'https://heicconverter.online')
+    frontend_url = os.environ.get('FRONTEND_URL', 'https://heicconverteronline.com')
     
     robots = f"""User-agent: *
 Allow: /
