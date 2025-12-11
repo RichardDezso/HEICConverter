@@ -524,7 +524,7 @@ async def upload_image(
         f.write(file_content)
     
     # Return the URL
-    frontend_url = os.environ.get('FRONTEND_URL', 'https://heicconverter.online')
+    frontend_url = os.environ.get('FRONTEND_URL', 'https://heicconverteronline.com')
     image_url = f"{frontend_url}/api/uploads/{filename}"
     
     return {
