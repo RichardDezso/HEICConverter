@@ -776,7 +776,7 @@ const Home = () => {
               <CardContent className="pt-6">
                 <Quote className="w-8 h-8 text-primary/30 mb-4" />
                 <p className="text-muted-foreground mb-4">
-                  "Batch conversion saved me hours of work. I converted 200 product photos in minutes instead of one by one."
+                  "Batch conversion saved me hours of work. I converted 50 product photos in minutes instead of one by one."
                 </p>
                 <p className="font-semibold">— James L.</p>
                 <p className="text-sm text-muted-foreground">E-commerce Seller</p>
@@ -906,7 +906,7 @@ const Home = () => {
                 <CardTitle className="text-xl">Can I convert multiple HEIC files at once?</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">There's no hard limit. Users regularly convert 200+ standard iPhone photos at once. For very large files (48MP ProRAW), we recommend batches of 20-50 files. Performance depends on file sizes, your browser, and internet speed.</p>
+                <p className="text-muted-foreground">There's no hard limit. Users regularly convert 50+ standard iPhone photos at once. For very large files (48MP ProRAW), we recommend batches of 20-30 files. Performance depends on file sizes, your browser, and internet speed.</p>
               </CardContent>
             </Card>
             
