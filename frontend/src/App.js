@@ -891,6 +891,51 @@ const Home = () => {
                 <p className="text-muted-foreground">PNG keeps lossless quality; JPG compresses slightly; PDF preserves resolution for printing and sharing.</p>
               </CardContent>
             </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Why are my iPhone photos in HEIC format?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Apple introduced HEIC with iOS 11 to save storage space. HEIC files are about 50% smaller than JPG while maintaining the same quality, helping you store more photos on your iPhone.</p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Can I convert multiple HEIC files at once?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Yes! Our batch conversion feature lets you select multiple HEIC files and convert them all simultaneously. You can download them individually or as a single ZIP file.</p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">Is my data secure when using this converter?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Absolutely. Your files are processed securely on our servers and automatically deleted immediately after conversion. We never store, share, or access your images.</p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">What's the maximum file size I can convert?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Our converter handles files up to 50MB per image, which covers even the highest resolution photos from iPhone Pro models with 48MP cameras.</p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl">How long does conversion take?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">Most conversions complete in just a few seconds. Larger files or batch conversions may take slightly longer depending on file sizes and your internet connection.</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
