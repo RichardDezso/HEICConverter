@@ -49,15 +49,6 @@ export const BlogListPage = () => {
     );
   }
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  };
-
   return (
     <div className="bg-background min-h-screen">
       <div className="container mx-auto px-4 py-12 max-w-7xl">

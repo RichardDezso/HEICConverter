@@ -93,15 +93,6 @@ export const BlogPostPage = () => {
     );
   }
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  };
-
   const renderTextWithLinks = (text) => {
     // Pattern to match [link text](url) format
     const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
