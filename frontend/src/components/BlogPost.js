@@ -20,7 +20,9 @@ export const BlogPostPage = () => {
 
   const fetchPost = async () => {
     try {
-      const response = await fetch(`${BACKEND_URL}/api/guides/posts/${id}`);
+      // Add cache busting parameter
+      const timestamp = new Date().getTime();
+      const response = await fetch(`${BACKEND_URL}/api/guides/posts/${id}?v=${timestamp}`);
       if (response.ok) {
         const data = await response.json();
         setPost(data);
