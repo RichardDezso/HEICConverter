@@ -34,10 +34,45 @@ export const KeywordPage = () => {
     );
   }
 
+  // Helper function to convert markdown links to HTML
+  const parseMarkdownLinks = (text) => {
+    const parts = [];
+    let lastIndex = 0;
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    let match;
+
+    while ((match = linkRegex.exec(text)) !== null) {
+      // Add text before the link
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      // Add the link
+      parts.push(
+        <a 
+          key={match.index} 
+          href={match[2]} 
+          className="text-primary hover:underline font-medium"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {match[1]}
+        </a>
+      );
+      lastIndex = match.index + match[0].length;
+    }
+
+    // Add remaining text
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : text;
+  };
+
   const renderContent = (item, index) => {
     switch (item.type) {
       case 'paragraph':
-        return <p key={index} className="text-muted-foreground mb-6 leading-relaxed">{item.text}</p>;
+        return <p key={index} className="text-muted-foreground mb-6 leading-relaxed">{parseMarkdownLinks(item.text)}</p>;
       case 'heading':
         return <h2 key={index} className="text-2xl font-semibold mb-4 mt-8">{item.text}</h2>;
       case 'list':
