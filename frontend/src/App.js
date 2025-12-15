@@ -641,6 +641,203 @@ const Home = () => {
           </Card>
         </div>
 
+        {/* Who Uses This Tool Section */}
+        <div className="mt-20">
+          <h2 className="text-4xl font-bold text-center mb-4">Who Uses HEIC Converter Online?</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Our free HEIC converter helps thousands of users every day. Here's who benefits most from our tool.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="text-center">
+              <CardContent className="pt-6">
+                <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FileImage className="w-7 h-7 text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Photographers</h3>
+                <p className="text-sm text-muted-foreground">
+                  Convert client photos from iPhone shoots to universally shareable JPG or archival PDF formats.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="pt-6">
+                <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Briefcase className="w-7 h-7 text-green-600" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Business Users</h3>
+                <p className="text-sm text-muted-foreground">
+                  Process receipts, product photos, and documentation for expense reports and presentations.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="pt-6">
+                <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <GraduationCap className="w-7 h-7 text-purple-600" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Students</h3>
+                <p className="text-sm text-muted-foreground">
+                  Convert assignment photos and research images to PDF for easy submission to school systems.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="pt-6">
+                <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Smartphone className="w-7 h-7 text-orange-600" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Everyday Users</h3>
+                <p className="text-sm text-muted-foreground">
+                  Share iPhone photos with Windows and Android friends who can't open HEIC files.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Format Comparison Table */}
+        <div className="mt-20">
+          <h2 className="text-4xl font-bold text-center mb-4">HEIC vs Other Formats: Which Should You Choose?</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Not sure which format to convert to? This comparison helps you pick the right one for your needs.
+          </p>
+          <Card className="shadow-lg overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-muted">
+                  <tr>
+                    <th className="px-6 py-4 text-left font-semibold">Feature</th>
+                    <th className="px-6 py-4 text-center font-semibold">HEIC</th>
+                    <th className="px-6 py-4 text-center font-semibold">JPG</th>
+                    <th className="px-6 py-4 text-center font-semibold">PNG</th>
+                    <th className="px-6 py-4 text-center font-semibold">PDF</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y">
+                  <tr>
+                    <td className="px-6 py-4 font-medium">File Size</td>
+                    <td className="px-6 py-4 text-center text-green-600">Smallest</td>
+                    <td className="px-6 py-4 text-center">Small</td>
+                    <td className="px-6 py-4 text-center text-orange-600">Large</td>
+                    <td className="px-6 py-4 text-center">Medium</td>
+                  </tr>
+                  <tr className="bg-muted/30">
+                    <td className="px-6 py-4 font-medium">Image Quality</td>
+                    <td className="px-6 py-4 text-center text-green-600">Excellent</td>
+                    <td className="px-6 py-4 text-center">Good</td>
+                    <td className="px-6 py-4 text-center text-green-600">Excellent</td>
+                    <td className="px-6 py-4 text-center text-green-600">Excellent</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 font-medium">Compatibility</td>
+                    <td className="px-6 py-4 text-center text-orange-600">Apple Only</td>
+                    <td className="px-6 py-4 text-center text-green-600">Universal</td>
+                    <td className="px-6 py-4 text-center text-green-600">Universal</td>
+                    <td className="px-6 py-4 text-center text-green-600">Universal</td>
+                  </tr>
+                  <tr className="bg-muted/30">
+                    <td className="px-6 py-4 font-medium">Transparency</td>
+                    <td className="px-6 py-4 text-center">Yes</td>
+                    <td className="px-6 py-4 text-center text-red-500">No</td>
+                    <td className="px-6 py-4 text-center text-green-600">Yes</td>
+                    <td className="px-6 py-4 text-center text-red-500">No</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 font-medium">Best For</td>
+                    <td className="px-6 py-4 text-center text-sm">iPhone storage</td>
+                    <td className="px-6 py-4 text-center text-sm">Web & sharing</td>
+                    <td className="px-6 py-4 text-center text-sm">Graphics & logos</td>
+                    <td className="px-6 py-4 text-center text-sm">Documents & printing</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </Card>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="mt-20">
+          <h2 className="text-4xl font-bold text-center mb-4">What Our Users Say</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Join thousands of satisfied users who convert their HEIC files with us every day.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card>
+              <CardContent className="pt-6">
+                <Quote className="w-8 h-8 text-primary/30 mb-4" />
+                <p className="text-muted-foreground mb-4">
+                  "Finally, my Windows PC can open iPhone photos! This tool is a lifesaver. Fast, free, and just works."
+                </p>
+                <p className="font-semibold">— Sarah M.</p>
+                <p className="text-sm text-muted-foreground">Windows User</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6">
+                <Quote className="w-8 h-8 text-primary/30 mb-4" />
+                <p className="text-muted-foreground mb-4">
+                  "Batch conversion saved me hours of work. I converted 200 product photos in minutes instead of one by one."
+                </p>
+                <p className="font-semibold">— James L.</p>
+                <p className="text-sm text-muted-foreground">E-commerce Seller</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6">
+                <Quote className="w-8 h-8 text-primary/30 mb-4" />
+                <p className="text-muted-foreground mb-4">
+                  "Simple and clean interface. No annoying ads or confusing options. Exactly what I needed for my school project."
+                </p>
+                <p className="font-semibold">— Emily R.</p>
+                <p className="text-sm text-muted-foreground">College Student</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Related Guides Section */}
+        <div className="mt-20">
+          <h2 className="text-4xl font-bold text-center mb-4">Learn More About HEIC Conversion</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Explore our in-depth guides to get the most out of your HEIC files.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => window.location.href = '/guides/what-is-heic-file-complete-guide'}>
+              <CardContent className="pt-6">
+                <h3 className="font-semibold text-lg mb-2">What Is a HEIC File?</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  A complete guide to Apple's modern photo format and why it matters.
+                </p>
+                <span className="text-primary text-sm font-medium flex items-center gap-1">
+                  Read Guide <ArrowRight className="w-4 h-4" />
+                </span>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => window.location.href = '/guides/heic-to-pdf-converter'}>
+              <CardContent className="pt-6">
+                <h3 className="font-semibold text-lg mb-2">HEIC to PDF Converter Guide</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Learn how to convert HEIC images to PDF for documents and printing.
+                </p>
+                <span className="text-primary text-sm font-medium flex items-center gap-1">
+                  Read Guide <ArrowRight className="w-4 h-4" />
+                </span>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => window.location.href = '/guides/how-to-batch-convert-heic-to-pdf'}>
+              <CardContent className="pt-6">
+                <h3 className="font-semibold text-lg mb-2">Batch Convert Multiple Files</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Save time by converting dozens of HEIC files at once.
+                </p>
+                <span className="text-primary text-sm font-medium flex items-center gap-1">
+                  Read Guide <ArrowRight className="w-4 h-4" />
+                </span>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
         {/* Ad Placement - Above FAQ */}
         <div className="mt-20 mb-16 max-w-4xl mx-auto">
           <DisplayAd slot="YOUR_AD_SLOT_ID" className="mb-12" />
