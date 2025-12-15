@@ -505,7 +505,10 @@ const Home = () => {
                     {converting ? (
                       <>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Converting...
+                        {conversionStage === 'uploading' && `Uploading... ${uploadProgress}%`}
+                        {conversionStage === 'processing' && 'Processing...'}
+                        {conversionStage === 'complete' && 'Complete!'}
+                        {!conversionStage && 'Converting...'}
                       </>
                     ) : (
                       <>
@@ -523,6 +526,34 @@ const Home = () => {
                     Reset
                   </Button>
                 </div>
+                
+                {/* Progress Bar */}
+                {converting && (
+                  <div className="space-y-2">
+                    <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+                      <div 
+                        className="h-full bg-primary transition-all duration-300 ease-out"
+                        style={{ 
+                          width: conversionStage === 'processing' || conversionStage === 'complete' 
+                            ? '100%' 
+                            : `${uploadProgress}%` 
+                        }}
+                      />
+                    </div>
+                    <div className="flex justify-between text-xs text-muted-foreground">
+                      <span>
+                        {conversionStage === 'uploading' && `Uploading ${batchMode ? selectedFiles.length + ' files' : 'file'}...`}
+                        {conversionStage === 'processing' && `Converting to ${outputFormat.toUpperCase()}...`}
+                        {conversionStage === 'complete' && 'Conversion complete!'}
+                      </span>
+                      <span>
+                        {conversionStage === 'uploading' && `${uploadProgress}%`}
+                        {conversionStage === 'processing' && 'Please wait'}
+                        {conversionStage === 'complete' && '100%'}
+                      </span>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
