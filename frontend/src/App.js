@@ -14,6 +14,7 @@ import { AboutPage, ContactPage, PrivacyPage } from "@/components/StaticPage";
 import { BlogListPage } from "@/components/Blog";
 import { BlogPostPage } from "@/components/BlogPost";
 import { FAQPage } from "@/components/FAQPage";
+import { CookieConsent } from "@/components/CookieConsent";
 import { AdminLogin } from "@/components/Admin/AdminLogin";
 import { AdminDashboard } from "@/components/Admin/AdminDashboard";
 import { PostEditor } from "@/components/Admin/PostEditor";
