@@ -89,10 +89,6 @@ export const BlogListPage = () => {
                 )}
                 <div className="flex-1">
                   <CardHeader>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                      <Calendar className="w-4 h-4" />
-                      <span>{formatDate(post.date)}</span>
-                    </div>
                     <CardTitle className="text-2xl hover:text-primary transition-colors">
                       {post.title}
                     </CardTitle>

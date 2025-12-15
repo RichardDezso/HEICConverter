@@ -212,10 +212,6 @@ export const BlogPostPage = () => {
 
           {/* Post Header */}
           <div className="mb-8">
-            <div className="flex items-center gap-2 text-muted-foreground mb-4">
-              <Calendar className="w-4 h-4" />
-              <span>{formatDate(post.date)}</span>
-            </div>
             <h1 className="text-5xl font-bold mb-4">{post.title}</h1>
             <p className="text-xl text-muted-foreground">{post.excerpt}</p>
           </div>
