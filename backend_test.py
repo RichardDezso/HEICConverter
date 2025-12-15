@@ -153,6 +153,131 @@ class HEICConverterTester:
             self.log_test("CORS Configuration", False, str(e))
             return False
 
+    def test_guides_posts_endpoint(self):
+        """Test GET /api/guides/posts endpoint"""
+        try:
+            response = requests.get(f"{self.api_url}/guides/posts", timeout=10)
+            success = response.status_code == 200
+            
+            if success:
+                posts = response.json()
+                if isinstance(posts, list) and len(posts) >= 10:
+                    details = f"Status: {response.status_code}, Found {len(posts)} posts"
+                    # Check if posts have required fields
+                    required_fields = ['id', 'title', 'excerpt', 'content']
+                    first_post = posts[0] if posts else {}
+                    missing_fields = [field for field in required_fields if field not in first_post]
+                    if missing_fields:
+                        success = False
+                        details += f", Missing fields: {missing_fields}"
+                else:
+                    success = False
+                    details = f"Status: {response.status_code}, Expected 10+ posts, got {len(posts) if isinstance(posts, list) else 'invalid response'}"
+            else:
+                details = f"Status: {response.status_code}, Response: {response.text[:200]}"
+            
+            self.log_test("GET /api/guides/posts - Returns 10+ posts", success, details)
+            return success
+        except Exception as e:
+            self.log_test("GET /api/guides/posts - Returns 10+ posts", False, str(e))
+            return False
+
+    def test_specific_guide_post(self):
+        """Test GET /api/guides/posts/{post_id} for specific guide"""
+        try:
+            post_id = "how-to-batch-convert-heic-to-pdf"
+            response = requests.get(f"{self.api_url}/guides/posts/{post_id}", timeout=10)
+            success = response.status_code == 200
+            
+            if success:
+                post = response.json()
+                required_fields = ['id', 'title', 'content']
+                missing_fields = [field for field in required_fields if field not in post]
+                
+                if missing_fields:
+                    success = False
+                    details = f"Status: {response.status_code}, Missing fields: {missing_fields}"
+                elif post.get('id') != post_id:
+                    success = False
+                    details = f"Status: {response.status_code}, Wrong post ID returned: {post.get('id')}"
+                else:
+                    # Check if content is substantial (not placeholder)
+                    content = post.get('content', '')
+                    content_length = len(str(content))
+                    if content_length < 500:  # Expect substantial content
+                        success = False
+                        details = f"Status: {response.status_code}, Content too short: {content_length} chars"
+                    else:
+                        details = f"Status: {response.status_code}, Post found with {content_length} chars content"
+            else:
+                details = f"Status: {response.status_code}, Response: {response.text[:200]}"
+            
+            self.log_test(f"GET /api/guides/posts/{post_id} - Returns full article", success, details)
+            return success
+        except Exception as e:
+            self.log_test(f"GET /api/guides/posts/{post_id} - Returns full article", False, str(e))
+            return False
+
+    def test_guide_post_not_found(self):
+        """Test GET /api/guides/posts/{post_id} for non-existent post"""
+        try:
+            post_id = "non-existent-post-id"
+            response = requests.get(f"{self.api_url}/guides/posts/{post_id}", timeout=10)
+            success = response.status_code == 404
+            details = f"Status: {response.status_code}, Response: {response.text[:200]}"
+            
+            self.log_test("GET /api/guides/posts/non-existent - Returns 404", success, details)
+            return success
+        except Exception as e:
+            self.log_test("GET /api/guides/posts/non-existent - Returns 404", False, str(e))
+            return False
+
+    def test_guides_content_quality(self):
+        """Test that guides have substantial content (not placeholder text)"""
+        try:
+            response = requests.get(f"{self.api_url}/guides/posts", timeout=10)
+            if response.status_code != 200:
+                self.log_test("Guides Content Quality Check", False, f"Failed to fetch posts: {response.status_code}")
+                return False
+            
+            posts = response.json()
+            if not isinstance(posts, list) or len(posts) == 0:
+                self.log_test("Guides Content Quality Check", False, "No posts found")
+                return False
+            
+            # Check first few posts for content quality
+            substantial_posts = 0
+            placeholder_posts = []
+            
+            for i, post in enumerate(posts[:5]):  # Check first 5 posts
+                content = str(post.get('content', ''))
+                title = post.get('title', 'Unknown')
+                
+                # Check for placeholder indicators
+                is_placeholder = (
+                    len(content) < 500 or
+                    'coming soon' in content.lower() or
+                    'placeholder' in content.lower() or
+                    'lorem ipsum' in content.lower()
+                )
+                
+                if not is_placeholder:
+                    substantial_posts += 1
+                else:
+                    placeholder_posts.append(title)
+            
+            success = substantial_posts >= 3  # At least 3 out of 5 should have substantial content
+            if success:
+                details = f"Found {substantial_posts}/5 posts with substantial content (700+ chars)"
+            else:
+                details = f"Only {substantial_posts}/5 posts have substantial content. Placeholder posts: {placeholder_posts}"
+            
+            self.log_test("Guides Content Quality - Substantial content", success, details)
+            return success
+        except Exception as e:
+            self.log_test("Guides Content Quality - Substantial content", False, str(e))
+            return False
+
     def run_all_tests(self):
         """Run all backend tests"""
         print("🚀 Starting HEIC Converter Backend Tests")
@@ -164,7 +289,15 @@ class HEICConverterTester:
             print("❌ API is not accessible. Stopping tests.")
             return False
         
-        # Run validation tests
+        # Test guides functionality (main focus)
+        print("\n📚 Testing Guides/Blog Functionality:")
+        self.test_guides_posts_endpoint()
+        self.test_specific_guide_post()
+        self.test_guide_post_not_found()
+        self.test_guides_content_quality()
+        
+        # Run validation tests for HEIC conversion
+        print("\n🔄 Testing HEIC Conversion Functionality:")
         self.test_file_validation_invalid_extension()
         self.test_invalid_output_format()
         self.test_missing_file()
@@ -173,6 +306,7 @@ class HEICConverterTester:
         self.test_heic_conversion_simulation()
         
         # Test CORS
+        print("\n🌐 Testing CORS Configuration:")
         self.test_cors_headers()
         
         # Print summary
