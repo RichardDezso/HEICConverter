@@ -51,6 +51,13 @@ export const KeywordPage = () => {
             ))}
           </ul>
         );
+      case 'faq':
+        return (
+          <div key={index} className="mb-8">
+            <h3 className="text-2xl font-semibold mb-3">{item.question}</h3>
+            <p className="text-muted-foreground">{item.answer}</p>
+          </div>
+        );
       default:
         return null;
     }
