@@ -29,6 +29,8 @@ const Home = () => {
   const [converting, setConverting] = useState(false);
   const [convertedFiles, setConvertedFiles] = useState([]);
   const [batchMode, setBatchMode] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [conversionStage, setConversionStage] = useState(''); // 'uploading', 'processing', 'complete'
 
   // Add FAQ Schema for SEO
   useEffect(() => {
