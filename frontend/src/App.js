@@ -906,7 +906,7 @@ const Home = () => {
                 <CardTitle className="text-xl">Can I convert multiple HEIC files at once?</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Yes! Our batch conversion feature lets you select multiple HEIC files and convert them all simultaneously. There's no hard limit—users have converted 200+ files at once. Performance depends on your browser memory and internet connection speed.</p>
+                <p className="text-muted-foreground">There's no hard limit. Users regularly convert 200+ standard iPhone photos at once. For very large files (48MP ProRAW), we recommend batches of 20-50 files. Performance depends on file sizes, your browser, and internet speed.</p>
               </CardContent>
             </Card>
             
