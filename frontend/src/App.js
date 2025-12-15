@@ -1042,6 +1042,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <CookieConsent />
       </BrowserRouter>
     </div>
   );
