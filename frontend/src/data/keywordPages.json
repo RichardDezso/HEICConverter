@@ -195,24 +195,29 @@
         "text": "FAQs about converting HEIC to PDF"
       },
       {
-        "type": "paragraph",
-        "text": "How do I turn a HEIC into a PDF? Use a HEIC to PDF converter: upload the file, choose PDF as the output, convert, and download. The process usually takes just a few seconds."
+        "type": "faq",
+        "question": "How do I turn a HEIC into a PDF?",
+        "answer": "Use a HEIC to PDF converter: upload the file, choose PDF as the output, convert, and download. The process usually takes just a few seconds."
       },
       {
-        "type": "paragraph",
-        "text": "How do I turn an HEIC into a PDF on iPhone? You can either use your browser and an online converter, or share the photo from the Photos app, choose Print, zoom in on the preview, and save it as a PDF to Files."
+        "type": "faq",
+        "question": "How do I turn an HEIC into a PDF on iPhone?",
+        "answer": "You can either use your browser and an online converter, or share the photo from the Photos app, choose Print, zoom in on the preview, and save it as a PDF to Files."
       },
       {
-        "type": "paragraph",
-        "text": "Is there a way to convert HEIC to PDF free online? Yes. Tools like [HEIC Converter Online](https://heicconverteronline.com/) let you convert HEIC file to PDF free online directly in your browser without creating an account."
+        "type": "faq",
+        "question": "Is there a way to convert HEIC to PDF free online?",
+        "answer": "Yes. Tools like HEIC Converter Online let you convert HEIC file to PDF free online directly in your browser without creating an account."
       },
       {
-        "type": "paragraph",
-        "text": "Will converting HEIC to PDF reduce quality? The image is embedded into a PDF page, so you keep the visual quality of the source image. If the HEIC is high-resolution, the PDF will look sharp enough for viewing and printing."
+        "type": "faq",
+        "question": "Will converting HEIC to PDF reduce quality?",
+        "answer": "The image is embedded into a PDF page, so you keep the visual quality of the source image. If the HEIC is high-resolution, the PDF will look sharp enough for viewing and printing."
       },
       {
-        "type": "paragraph",
-        "text": "Can I convert multiple HEIC files to one PDF? You can convert several HEIC files to separate PDFs, then merge them using a PDF merge tool. If your converter later supports 'merge HEIC to PDF' in one step, you can handle everything in a single workflow."
+        "type": "faq",
+        "question": "Can I convert multiple HEIC files to one PDF?",
+        "answer": "You can convert several HEIC files to separate PDFs, then merge them using a PDF merge tool. If your converter later supports 'merge HEIC to PDF' in one step, you can handle everything in a single workflow."
       }
     ]
   }
