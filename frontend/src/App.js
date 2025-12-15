@@ -971,6 +971,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/faq" element={<FAQPage />} />
             
             {/* Keyword/SEO Pages - Includes converter guide pages, must be last */}
             <Route path="/:slug" element={<KeywordPage />} />
