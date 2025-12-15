@@ -46,6 +46,12 @@ export const Header = () => {
               HEIC to PNG
             </Link>
             <Link 
+              to="/heic-to-pdf" 
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              HEIC to PDF
+            </Link>
+            <Link 
               to="/about" 
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
