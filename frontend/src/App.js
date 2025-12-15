@@ -240,6 +240,8 @@ const Home = () => {
       toast.error(errorMessage);
     } finally {
       setConverting(false);
+      setUploadProgress(0);
+      setConversionStage('');
     }
   };
 
@@ -250,6 +252,9 @@ const Home = () => {
     }
 
     setConverting(true);
+    setUploadProgress(0);
+    setConversionStage('uploading');
+    
     const formData = new FormData();
     formData.append('file', selectedFiles[0]);
     formData.append('output_format', outputFormat);
@@ -260,7 +265,16 @@ const Home = () => {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          setUploadProgress(percentCompleted);
+          if (percentCompleted === 100) {
+            setConversionStage('processing');
+          }
+        },
       });
+
+      setConversionStage('complete');
 
       // response.data is already a blob due to responseType: 'blob'
       const url = window.URL.createObjectURL(response.data);
@@ -291,6 +305,8 @@ const Home = () => {
       toast.error(errorMessage);
     } finally {
       setConverting(false);
+      setUploadProgress(0);
+      setConversionStage('');
     }
   };
 
