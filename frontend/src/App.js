@@ -167,6 +167,9 @@ const Home = () => {
     }
 
     setConverting(true);
+    setUploadProgress(0);
+    setConversionStage('uploading');
+    
     const formData = new FormData();
     
     selectedFiles.forEach(file => {
@@ -180,7 +183,16 @@ const Home = () => {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          setUploadProgress(percentCompleted);
+          if (percentCompleted === 100) {
+            setConversionStage('processing');
+          }
+        },
       });
+
+      setConversionStage('complete');
 
       // Handle ZIP file download
       const blob = response.data;
@@ -203,6 +215,8 @@ const Home = () => {
       setTimeout(() => {
         setSelectedFiles([]);
         setBatchMode(false);
+        setUploadProgress(0);
+        setConversionStage('');
       }, 1000);
       
     } catch (error) {
