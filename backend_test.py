@@ -142,11 +142,17 @@ class HEICConverterTester:
     def test_cors_headers(self):
         """Test CORS configuration"""
         try:
-            response = requests.options(f"{self.api_url}/convert", timeout=10)
-            cors_headers = response.headers.get('Access-Control-Allow-Origin', '')
+            # Test with proper CORS preflight request
+            headers = {
+                'Origin': 'https://heicconverteronline.com',
+                'Access-Control-Request-Method': 'GET'
+            }
+            response = requests.options(f"{self.api_url}/guides/posts", headers=headers, timeout=10)
+            cors_origin = response.headers.get('Access-Control-Allow-Origin', '')
+            cors_methods = response.headers.get('Access-Control-Allow-Methods', '')
             
-            success = cors_headers == '*' or 'emergentagent.com' in cors_headers
-            details = f"CORS Origin: {cors_headers}"
+            success = (cors_origin == '*' or 'heicconverteronline.com' in cors_origin) and 'GET' in cors_methods
+            details = f"CORS Origin: {cors_origin}, Methods: {cors_methods}"
             self.log_test("CORS Configuration", success, details)
             return success
         except Exception as e:
