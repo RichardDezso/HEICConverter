@@ -906,7 +906,7 @@ const Home = () => {
                 <CardTitle className="text-xl">Can I convert multiple HEIC files at once?</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Yes! Our batch conversion feature lets you select multiple HEIC files and convert them all simultaneously. You can download them individually or as a single ZIP file.</p>
+                <p className="text-muted-foreground">Yes! Our batch conversion feature lets you select multiple HEIC files and convert them all simultaneously. There's no hard limit—users have converted 200+ files at once. Performance depends on your browser memory and internet connection speed.</p>
               </CardContent>
             </Card>
             
