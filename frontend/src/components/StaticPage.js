@@ -91,7 +91,7 @@ export const ContactPage = () => {
     setError('');
 
     try {
-      const response = await fetch('https://formspree.io/f/xzaboree', {
+      const response = await fetch('https://formspree.io/rdezso@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
