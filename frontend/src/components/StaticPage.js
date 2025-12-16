@@ -64,10 +64,60 @@ export const AboutPage = () => {
 
 export const ContactPage = () => {
   const navigate = useNavigate();
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     document.title = 'Contact - HEIC Converter';
   }, []);
+
+  const handleChange = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('https://formspree.io/f/xzaboree', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          subject: formState.subject,
+          message: formState.message,
+          _subject: `HEIC Converter Contact: ${formState.subject}`
+        })
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormState({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (err) {
+      setError('Failed to send message. Please try again or email us directly.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -80,26 +130,123 @@ export const ContactPage = () => {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
+      <div className="container mx-auto px-4 py-12 max-w-2xl">
         <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
         
         <Card className="shadow-lg">
-          <CardContent className="pt-8 space-y-6">
-            <div>
-              <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Have questions, feedback, or need support? We'd love to hear from you!
-              </p>
-            </div>
+          <CardContent className="pt-8">
+            {submitted ? (
+              <div className="text-center py-8">
+                <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                <h2 className="text-2xl font-semibold mb-2">Message Sent!</h2>
+                <p className="text-muted-foreground mb-6">
+                  Thank you for reaching out. We'll get back to you as soon as possible.
+                </p>
+                <Button onClick={() => setSubmitted(false)}>
+                  Send Another Message
+                </Button>
+              </div>
+            ) : (
+              <>
+                <p className="text-muted-foreground mb-6">
+                  Have questions, feedback, or need support? Fill out the form below and we'll get back to you shortly.
+                </p>
 
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Email</h3>
-              <p className="text-muted-foreground">
-                <a href="mailto:support@heicconverteronline.com" className="text-primary hover:underline">
-                  support@heicconverteronline.com
-                </a>
-              </p>
-            </div>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+                        Name *
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        value={formState.name}
+                        onChange={handleChange}
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                        Email *
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        value={formState.email}
+                        onChange={handleChange}
+                        placeholder="your@email.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                      Subject *
+                    </label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      type="text"
+                      required
+                      value={formState.subject}
+                      onChange={handleChange}
+                      placeholder="What is this about?"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      value={formState.message}
+                      onChange={handleChange}
+                      placeholder="How can we help you?"
+                      className="w-full px-3 py-2 border border-input rounded-md bg-background text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                    />
+                  </div>
+
+                  {error && (
+                    <p className="text-red-500 text-sm">{error}</p>
+                  )}
+
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full"
+                    disabled={submitting}
+                  >
+                    {submitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-5 w-5" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </form>
+
+                <p className="text-sm text-muted-foreground mt-6 text-center">
+                  Or email us directly at{' '}
+                  <a href="mailto:rdezso@gmail.com" className="text-primary hover:underline">
+                    rdezso@gmail.com
+                  </a>
+                </p>
+              </>
+            )}
           </CardContent>
         </Card>
       </div>
