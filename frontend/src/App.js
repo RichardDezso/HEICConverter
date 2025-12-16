@@ -851,7 +851,7 @@ const Home = () => {
               <CardContent className="pt-6">
                 <Quote className="w-8 h-8 text-primary/30 mb-4" />
                 <p className="text-muted-foreground mb-4">
-                  "Simple and clean interface. No annoying ads or confusing options. Exactly what I needed for my school project."
+                  "Simple and clean interface with no confusing options. Super fast and easy to use. Exactly what I needed for my school project."
                 </p>
                 <p className="font-semibold">— Emily R.</p>
                 <p className="text-sm text-muted-foreground">College Student</p>
