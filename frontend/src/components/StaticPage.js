@@ -240,10 +240,7 @@ export const ContactPage = () => {
                 </form>
 
                 <p className="text-sm text-muted-foreground mt-6 text-center">
-                  Or email us directly at{' '}
-                  <a href="mailto:rdezso@gmail.com" className="text-primary hover:underline">
-                    rdezso@gmail.com
-                  </a>
+                  We typically respond within 24-48 hours.
                 </p>
               </>
             )}
