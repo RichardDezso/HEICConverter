@@ -204,13 +204,20 @@ export const BlogPostPage = () => {
         <article>
           {/* Featured Image */}
           {post.image && (
-            <div className="mb-8 rounded-lg overflow-hidden bg-muted/30">
-              <img 
-                src={post.image} 
-                alt={post.imageAlt || post.title}
-                className="w-full max-h-[500px] object-contain"
-              />
-            </div>
+            <figure className="mb-8">
+              <div className="rounded-lg overflow-hidden bg-muted/30">
+                <img 
+                  src={post.image} 
+                  alt={post.imageAlt || post.title}
+                  className="w-full max-h-[500px] object-contain"
+                />
+              </div>
+              {post.imageCaption && (
+                <figcaption className="text-center text-sm text-muted-foreground mt-3 italic">
+                  {post.imageCaption}
+                </figcaption>
+              )}
+            </figure>
           )}
 
           {/* Post Header */}
