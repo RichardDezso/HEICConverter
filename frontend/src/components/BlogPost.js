@@ -94,7 +94,12 @@ export const BlogPostPage = () => {
   }
 
   const renderTextWithLinks = (text) => {
-    // Pattern to match [link text](url) format
+    // Check if text contains HTML tags - if so, render as HTML
+    if (/<[^>]+>/.test(text)) {
+      return <span dangerouslySetInnerHTML={{ __html: text }} />;
+    }
+    
+    // Pattern to match [link text](url) format (markdown style)
     const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
     const parts = [];
     let lastIndex = 0;
@@ -105,14 +110,14 @@ export const BlogPostPage = () => {
       if (match.index > lastIndex) {
         parts.push(text.substring(lastIndex, match.index));
       }
-      // Add the link
+      // Add the link - internal links don't need target blank
+      const isInternal = match[2].startsWith('/');
       parts.push(
         <a
           key={match.index}
           href={match[2]}
           className="text-primary hover:underline font-medium"
-          target="_blank"
-          rel="noopener noreferrer"
+          {...(!isInternal && { target: "_blank", rel: "noopener noreferrer" })}
         >
           {match[1]}
         </a>
