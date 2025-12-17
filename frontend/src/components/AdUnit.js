@@ -16,6 +16,11 @@ export const AdUnit = ({
   style = {},
   className = ''
 }) => {
+  // TEMPORARILY DISABLED - Remove this return statement once AdSense is approved
+  // Then uncomment the code below to enable ads
+  return null;
+
+  /*
   useEffect(() => {
     try {
       // Push ad to AdSense
@@ -49,6 +54,7 @@ export const AdUnit = ({
       />
     </div>
   );
+  */
 };
 
 /**
