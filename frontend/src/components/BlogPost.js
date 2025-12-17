@@ -177,6 +177,13 @@ export const BlogPostPage = () => {
             </table>
           </div>
         );
+      case 'faq':
+        return (
+          <div key={index} className="mb-6 p-5 bg-muted/30 rounded-lg border border-border">
+            <h3 className="text-lg font-semibold text-foreground mb-2">{item.question}</h3>
+            <p className="text-muted-foreground leading-relaxed">{renderTextWithLinks(item.answer)}</p>
+          </div>
+        );
       default:
         return null;
     }
