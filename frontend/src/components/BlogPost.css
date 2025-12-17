@@ -77,13 +77,15 @@
   font-style: italic;
 }
 
-.blog-content a {
+.blog-content a,
+article a:not(.btn) {
   color: hsl(var(--primary));
   text-decoration: underline;
   font-weight: 500;
 }
 
-.blog-content a:hover {
+.blog-content a:hover,
+article a:not(.btn):hover {
   text-decoration: none;
 }
 
