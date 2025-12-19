@@ -2,6 +2,7 @@ import { getGuides } from '@/lib/db';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
+import fallbackGuides from '@/data/guides-fallback.json';
 
 export const metadata = {
   title: 'HEIC Conversion Guides & Tutorials',
@@ -14,8 +15,23 @@ export const metadata = {
 // Revalidate every hour
 export const revalidate = 3600;
 
+// Force dynamic rendering to fetch fresh data at runtime
+export const dynamic = 'force-dynamic';
+
 export default async function GuidesPage() {
-  const guides = await getGuides();
+  let guides = [];
+  
+  try {
+    guides = await getGuides();
+  } catch (error) {
+    console.log('Using fallback data for guides page');
+    guides = fallbackGuides;
+  }
+  
+  // Ensure we always have guide data
+  if (!guides || guides.length === 0) {
+    guides = fallbackGuides;
+  }
 
   return (
     <div className="min-h-screen bg-background">
