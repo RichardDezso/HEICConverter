@@ -1,9 +1,22 @@
 import { getGuides } from '@/lib/db';
+import fallbackGuides from '@/data/guides-fallback.json';
 
 const SITE_URL = 'https://heicconverteronline.com';
 
 export default async function sitemap() {
-  const guides = await getGuides();
+  let guides = [];
+  
+  try {
+    guides = await getGuides();
+  } catch (error) {
+    console.log('Using fallback data for sitemap');
+    guides = fallbackGuides;
+  }
+  
+  // Ensure we always have guide data
+  if (!guides || guides.length === 0) {
+    guides = fallbackGuides;
+  }
 
   const guideUrls = guides.map((guide) => ({
     url: `${SITE_URL}/guides/${guide.id}`,
