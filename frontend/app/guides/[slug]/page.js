@@ -5,14 +5,26 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
 import '@/app/guides/[slug]/guide.css';
+import fallbackGuides from '@/data/guides-fallback.json';
 
-// Generate static params for all guides
+// Generate static params for all guides - use fallback data for build safety
 export async function generateStaticParams() {
-  const guides = await getGuides();
-  return guides.map((guide) => ({
-    slug: guide.id,
-  }));
+  try {
+    const guides = await getGuides();
+    return guides.map((guide) => ({
+      slug: guide.id,
+    }));
+  } catch (error) {
+    // Use fallback data if DB is unavailable during build
+    console.log('Using fallback data for generateStaticParams');
+    return fallbackGuides.map((guide) => ({
+      slug: guide.id,
+    }));
+  }
 }
+
+// Allow dynamic params for guides not in fallback data
+export const dynamicParams = true;
 
 // Generate metadata for each guide
 export async function generateMetadata({ params }) {
