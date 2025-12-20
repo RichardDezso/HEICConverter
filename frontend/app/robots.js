@@ -5,6 +5,6 @@ export default function robots() {
       allow: '/',
       disallow: ['/admin', '/api/'],
     },
-    sitemap: 'https://heicconverteronline.com/sitemap.xml',
+    sitemap: 'https://www.heicconverteronline.com/sitemap.xml',
   };
 }
