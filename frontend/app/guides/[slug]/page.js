@@ -41,12 +41,12 @@ export async function generateMetadata({ params }) {
     description: guide.metaDescription || guide.excerpt,
     keywords: guide.keywords,
     alternates: {
-      canonical: `https://www.heicconverteronline.com/guides/${guide.id}`,
+      canonical: `https://heicconverteronline.com/guides/${guide.id}`,
     },
     openGraph: {
       title: guide.title,
       description: guide.metaDescription || guide.excerpt,
-      url: `https://www.heicconverteronline.com/guides/${guide.id}`,
+      url: `https://heicconverteronline.com/guides/${guide.id}`,
       type: 'article',
       images: guide.image ? [{ url: guide.image }] : [],
     },

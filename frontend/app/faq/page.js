@@ -5,7 +5,7 @@ export const metadata = {
   title: 'Frequently Asked Questions',
   description: 'Common questions about HEIC conversion, file formats, and how to use our free online converter.',
   alternates: {
-    canonical: 'https://www.heicconverteronline.com/faq',
+    canonical: 'https://heicconverteronline.com/faq',
   },
 };
 

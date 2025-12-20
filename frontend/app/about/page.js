@@ -5,7 +5,7 @@ export const metadata = {
   title: 'About HEIC Converter Online',
   description: 'Learn about HEIC Converter Online - a free tool to convert HEIC images to JPG, PNG, or PDF format.',
   alternates: {
-    canonical: 'https://www.heicconverteronline.com/about',
+    canonical: 'https://heicconverteronline.com/about',
   },
 };
 

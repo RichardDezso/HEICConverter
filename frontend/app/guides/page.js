@@ -8,7 +8,7 @@ export const metadata = {
   title: 'HEIC Conversion Guides & Tutorials',
   description: 'Learn everything about HEIC conversion. Guides on converting HEIC to JPG, PNG, PDF, troubleshooting tips, and best practices.',
   alternates: {
-    canonical: 'https://www.heicconverteronline.com/guides',
+    canonical: 'https://heicconverteronline.com/guides',
   },
 };
 

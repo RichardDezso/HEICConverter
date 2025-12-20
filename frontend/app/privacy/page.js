@@ -5,7 +5,7 @@ export const metadata = {
   title: 'Privacy Policy',
   description: 'Privacy Policy for HEIC Converter Online. Learn how we handle your data and protect your privacy.',
   alternates: {
-    canonical: 'https://www.heicconverteronline.com/privacy',
+    canonical: 'https://heicconverteronline.com/privacy',
   },
 };
 
