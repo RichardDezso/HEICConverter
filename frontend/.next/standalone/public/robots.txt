@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api/
 
-Sitemap: https://www.heicconverteronline.com/sitemap.xml
+Sitemap: https://heicconverteronline.com/sitemap.xml
