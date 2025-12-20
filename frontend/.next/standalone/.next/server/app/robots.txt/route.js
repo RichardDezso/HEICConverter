@@ -1,0 +1,6 @@
+"use strict";(()=>{var e={};e.id=703,e.ids=[703],e.modules={399:e=>{e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},517:e=>{e.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},6993:(e,t,r)=>{r.r(t),r.d(t,{originalPathname:()=>c,patchFetch:()=>x,requestAsyncStorage:()=>u,routeModule:()=>p,serverHooks:()=>l,staticGenerationAsyncStorage:()=>d});var o={};r.r(o),r.d(o,{GET:()=>i});var n=r(3278),a=r(5002),s=r(4877);async function i(){return new Response(`User-Agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://heicconverteronline.com/sitemap.xml`,{headers:{"Content-Type":"text/plain"}})}let p=new n.AppRouteRouteModule({definition:{kind:a.x.APP_ROUTE,page:"/robots.txt/route",pathname:"/robots.txt",filename:"route",bundlePath:"app/robots.txt/route"},resolvedPagePath:"/app/frontend/app/robots.txt/route.js",nextConfigOutput:"standalone",userland:o}),{requestAsyncStorage:u,staticGenerationAsyncStorage:d,serverHooks:l}=p,c="/robots.txt/route";function x(){return(0,s.patchFetch)({serverHooks:l,staticGenerationAsyncStorage:d})}},3278:(e,t,r)=>{e.exports=r(517)}};var t=require("../../webpack-runtime.js");t.C(e);var r=e=>t(t.s=e),o=t.X(0,[379],()=>r(6993));module.exports=o})();
