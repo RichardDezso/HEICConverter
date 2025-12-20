@@ -11,15 +11,19 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.pexels.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'customer-assets.emergentagent.com',
+      },
     ],
   },
   async redirects() {
     return [
-      // Redirect www to non-www
+      // Redirect non-www to www (www is primary)
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'www.heicconverteronline.com' }],
-        destination: 'https://heicconverteronline.com/:path*',
+        has: [{ type: 'host', value: 'heicconverteronline.com' }],
+        destination: 'https://www.heicconverteronline.com/:path*',
         permanent: true,
       },
       // Redirect old blog routes
