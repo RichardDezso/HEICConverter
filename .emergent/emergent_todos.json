@@ -1,0 +1,14 @@
+[
+  {
+    "content": "Fix build-frontend-artifacts.sh to support Next.js standalone mode instead of static export",
+    "status": "completed"
+  },
+  {
+    "content": "Update entrypoint.sh to handle correct directory structure",
+    "status": "completed"
+  },
+  {
+    "content": "Verify all manifest files are properly configured",
+    "status": "completed"
+  }
+]

@@ -66,17 +66,6 @@
       "static/chunks/972-b259e05038d80c50.js",
       "static/chunks/app/guides/[slug]/page-cb4e76a9fa9e30fa.js"
     ],
-    "/heic-to-pdf/page": [
-      "static/chunks/webpack-d830506d06f036c5.js",
-      "static/chunks/fd9d1056-ccaa97ff78f7adb9.js",
-      "static/chunks/117-fdac4f7de22898f0.js",
-      "static/chunks/main-app-b5146d1b055dd54e.js",
-      "static/chunks/972-b259e05038d80c50.js",
-      "static/chunks/50-caf56d764cba86e4.js",
-      "static/chunks/151-c3cdd9a4c8ab7ab9.js",
-      "static/chunks/379-7a2cff6883245465.js",
-      "static/chunks/app/heic-to-pdf/page-b8852062e264f2ca.js"
-    ],
     "/heic-to-jpg/page": [
       "static/chunks/webpack-d830506d06f036c5.js",
       "static/chunks/fd9d1056-ccaa97ff78f7adb9.js",
@@ -87,6 +76,17 @@
       "static/chunks/151-c3cdd9a4c8ab7ab9.js",
       "static/chunks/379-7a2cff6883245465.js",
       "static/chunks/app/heic-to-jpg/page-72a2ef60172bddee.js"
+    ],
+    "/heic-to-pdf/page": [
+      "static/chunks/webpack-d830506d06f036c5.js",
+      "static/chunks/fd9d1056-ccaa97ff78f7adb9.js",
+      "static/chunks/117-fdac4f7de22898f0.js",
+      "static/chunks/main-app-b5146d1b055dd54e.js",
+      "static/chunks/972-b259e05038d80c50.js",
+      "static/chunks/50-caf56d764cba86e4.js",
+      "static/chunks/151-c3cdd9a4c8ab7ab9.js",
+      "static/chunks/379-7a2cff6883245465.js",
+      "static/chunks/app/heic-to-pdf/page-b8852062e264f2ca.js"
     ],
     "/heic-to-png/page": [
       "static/chunks/webpack-d830506d06f036c5.js",
