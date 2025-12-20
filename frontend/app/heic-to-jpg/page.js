@@ -8,12 +8,12 @@ export const metadata = {
   description: 'Convert HEIC to JPG format instantly. Free online HEIC to JPEG converter with batch processing support. Works on any device.',
   keywords: ['HEIC to JPG', 'HEIC to JPEG', 'convert HEIC to JPG', 'iPhone photos to JPG'],
   alternates: {
-    canonical: 'https://heicconverteronline.com/heic-to-jpg',
+    canonical: 'https://www.heicconverteronline.com/heic-to-jpg',
   },
   openGraph: {
     title: 'HEIC to JPG Converter – Convert HEIC to JPEG Online Free',
     description: 'Convert HEIC to JPG format instantly. Free online converter.',
-    url: 'https://heicconverteronline.com/heic-to-jpg',
+    url: 'https://www.heicconverteronline.com/heic-to-jpg',
     type: 'website',
   },
 };

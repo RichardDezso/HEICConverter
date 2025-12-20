@@ -7,7 +7,7 @@ export const metadata = {
   title: 'HEIC Converter Online - Convert HEIC to JPG, PNG, PDF Free',
   description: 'Free online HEIC converter. Convert HEIC files to JPG, PNG, or PDF format instantly. Batch conversion supported. Works on any device.',
   alternates: {
-    canonical: 'https://heicconverteronline.com',
+    canonical: 'https://www.heicconverteronline.com',
   },
 };
 

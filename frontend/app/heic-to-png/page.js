@@ -8,12 +8,12 @@ export const metadata = {
   description: 'Convert HEIC to PNG format with lossless quality. Free online converter supporting transparency and batch conversion. No signup required.',
   keywords: ['HEIC to PNG', 'HEIC to PNG converter', 'convert HEIC to PNG', 'lossless conversion'],
   alternates: {
-    canonical: 'https://heicconverteronline.com/heic-to-png',
+    canonical: 'https://www.heicconverteronline.com/heic-to-png',
   },
   openGraph: {
     title: 'HEIC to PNG Converter – Convert HEIC to PNG Online Free',
     description: 'Convert HEIC to PNG with lossless quality. Free online converter.',
-    url: 'https://heicconverteronline.com/heic-to-png',
+    url: 'https://www.heicconverteronline.com/heic-to-png',
     type: 'website',
   },
 };

@@ -8,12 +8,12 @@ export const metadata = {
   description: 'Convert HEIC to PDF online for free. Upload HEIC photos, change them to PDF in seconds, and download ready-to-share documents that open on any device.',
   keywords: ['HEIC to PDF', 'HEIC to PDF converter', 'convert HEIC to PDF', 'iPhone photos to PDF'],
   alternates: {
-    canonical: 'https://heicconverteronline.com/heic-to-pdf',
+    canonical: 'https://www.heicconverteronline.com/heic-to-pdf',
   },
   openGraph: {
     title: 'HEIC to PDF Converter – Convert HEIC Files to PDF Online Free',
     description: 'Convert HEIC to PDF online for free. Upload HEIC photos and download PDFs instantly.',
-    url: 'https://heicconverteronline.com/heic-to-pdf',
+    url: 'https://www.heicconverteronline.com/heic-to-pdf',
     type: 'website',
   },
 };

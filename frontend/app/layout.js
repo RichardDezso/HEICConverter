@@ -4,7 +4,7 @@ import { Footer } from '@/components/Footer';
 import { CookieConsent } from '@/components/CookieConsent';
 
 export const metadata = {
-  metadataBase: new URL('https://heicconverteronline.com'),
+  metadataBase: new URL('https://www.heicconverteronline.com'),
   title: {
     default: 'HEIC Converter Online - Convert HEIC to JPG, PNG, PDF Free',
     template: '%s | HEIC Converter Online',
@@ -16,7 +16,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://heicconverteronline.com',
+    url: 'https://www.heicconverteronline.com',
     siteName: 'HEIC Converter Online',
     title: 'HEIC Converter Online - Convert HEIC to JPG, PNG, PDF Free',
     description: 'Free online HEIC converter. Convert HEIC files to JPG, PNG, or PDF format instantly.',
@@ -31,7 +31,7 @@ export const metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://heicconverteronline.com',
+    canonical: 'https://www.heicconverteronline.com',
   },
 };
 
