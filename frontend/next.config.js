@@ -19,11 +19,11 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Redirect non-www to www (www is primary)
+      // Redirect www to non-www (non-www is canonical)
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'heicconverteronline.com' }],
-        destination: 'https://www.heicconverteronline.com/:path*',
+        has: [{ type: 'host', value: 'www.heicconverteronline.com' }],
+        destination: 'https://heicconverteronline.com/:path*',
         permanent: true,
       },
       // Redirect old blog routes
