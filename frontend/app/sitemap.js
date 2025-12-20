@@ -1,6 +1,6 @@
 import fallbackGuides from '@/data/guides-fallback.json';
 
-const SITE_URL = 'https://heicconverteronline.com';
+const SITE_URL = 'https://www.heicconverteronline.com';
 
 export default function sitemap() {
   // Use static fallback data - no database calls needed
