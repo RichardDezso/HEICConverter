@@ -1,103 +1,103 @@
-"use strict";(()=>{var e={};e.id=717,e.ids=[717],e.modules={399:e=>{e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},517:e=>{e.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},5430:(e,r,o)=>{o.r(r),o.d(r,{originalPathname:()=>s,patchFetch:()=>w,requestAsyncStorage:()=>h,routeModule:()=>p,serverHooks:()=>u,staticGenerationAsyncStorage:()=>a});var t={};o.r(t),o.d(t,{GET:()=>l});var i=o(3278),c=o(5002),n=o(4877);async function l(){return new Response(`<?xml version="1.0" encoding="UTF-8"?>
+"use strict";(()=>{var e={};e.id=717,e.ids=[717],e.modules={399:e=>{e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},517:e=>{e.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},5430:(e,r,o)=>{o.r(r),o.d(r,{originalPathname:()=>s,patchFetch:()=>g,requestAsyncStorage:()=>h,routeModule:()=>p,serverHooks:()=>u,staticGenerationAsyncStorage:()=>a});var t={};o.r(t),o.d(t,{GET:()=>l});var i=o(3278),c=o(5002),n=o(4877);async function l(){return new Response(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.heicconverteronline.com/</loc>
+    <loc>https://heicconverteronline.com/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/heic-to-pdf</loc>
+    <loc>https://heicconverteronline.com/heic-to-pdf</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/heic-to-png</loc>
+    <loc>https://heicconverteronline.com/heic-to-png</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/heic-to-jpg</loc>
+    <loc>https://heicconverteronline.com/heic-to-jpg</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides</loc>
+    <loc>https://heicconverteronline.com/guides</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/about</loc>
+    <loc>https://heicconverteronline.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/contact</loc>
+    <loc>https://heicconverteronline.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/privacy</loc>
+    <loc>https://heicconverteronline.com/privacy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/faq</loc>
+    <loc>https://heicconverteronline.com/faq</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/convert-heic-to-pdf-easy-steps</loc>
+    <loc>https://heicconverteronline.com/guides/convert-heic-to-pdf-easy-steps</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/what-is-heic-file-complete-guide</loc>
+    <loc>https://heicconverteronline.com/guides/what-is-heic-file-complete-guide</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/how-to-convert-heic-to-jpg</loc>
+    <loc>https://heicconverteronline.com/guides/how-to-convert-heic-to-jpg</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/heic-vs-jpg-comparison</loc>
+    <loc>https://heicconverteronline.com/guides/heic-vs-jpg-comparison</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/heic-to-pdf-converter</loc>
+    <loc>https://heicconverteronline.com/guides/heic-to-pdf-converter</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/how-to-batch-convert-heic-to-pdf</loc>
+    <loc>https://heicconverteronline.com/guides/how-to-batch-convert-heic-to-pdf</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/heic-to-pdf-quality-guide</loc>
+    <loc>https://heicconverteronline.com/guides/heic-to-pdf-quality-guide</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/heic-to-pdf-for-business</loc>
+    <loc>https://heicconverteronline.com/guides/heic-to-pdf-for-business</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/heic-pdf-vs-jpeg-pdf</loc>
+    <loc>https://heicconverteronline.com/guides/heic-pdf-vs-jpeg-pdf</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/heic-to-pdf-troubleshooting</loc>
+    <loc>https://heicconverteronline.com/guides/heic-to-pdf-troubleshooting</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.heicconverteronline.com/guides/heic-to-png-converter-guide</loc>
+    <loc>https://heicconverteronline.com/guides/heic-to-png-converter-guide</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-</urlset>`,{headers:{"Content-Type":"application/xml","Cache-Control":"public, max-age=86400"}})}let p=new i.AppRouteRouteModule({definition:{kind:c.x.APP_ROUTE,page:"/sitemap.xml/route",pathname:"/sitemap.xml",filename:"route",bundlePath:"app/sitemap.xml/route"},resolvedPagePath:"/app/frontend/app/sitemap.xml/route.js",nextConfigOutput:"standalone",userland:t}),{requestAsyncStorage:h,staticGenerationAsyncStorage:a,serverHooks:u}=p,s="/sitemap.xml/route";function w(){return(0,n.patchFetch)({serverHooks:u,staticGenerationAsyncStorage:a})}},3278:(e,r,o)=>{e.exports=o(517)}};var r=require("../../webpack-runtime.js");r.C(e);var o=e=>r(r.s=e),t=r.X(0,[379],()=>o(5430));module.exports=t})();
+</urlset>`,{headers:{"Content-Type":"application/xml","Cache-Control":"public, max-age=86400"}})}let p=new i.AppRouteRouteModule({definition:{kind:c.x.APP_ROUTE,page:"/sitemap.xml/route",pathname:"/sitemap.xml",filename:"route",bundlePath:"app/sitemap.xml/route"},resolvedPagePath:"/app/frontend/app/sitemap.xml/route.js",nextConfigOutput:"standalone",userland:t}),{requestAsyncStorage:h,staticGenerationAsyncStorage:a,serverHooks:u}=p,s="/sitemap.xml/route";function g(){return(0,n.patchFetch)({serverHooks:u,staticGenerationAsyncStorage:a})}},3278:(e,r,o)=>{e.exports=o(517)}};var r=require("../../webpack-runtime.js");r.C(e);var o=e=>r(r.s=e),t=r.X(0,[379],()=>o(5430));module.exports=t})();

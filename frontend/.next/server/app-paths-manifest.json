@@ -3,13 +3,13 @@
   "/contact/page": "app/contact/page.js",
   "/robots.txt/route": "app/robots.txt/route.js",
   "/sitemap.xml/route": "app/sitemap.xml/route.js",
-  "/about/page": "app/about/page.js",
-  "/guides/page": "app/guides/page.js",
   "/faq/page": "app/faq/page.js",
   "/guides/[slug]/page": "app/guides/[slug]/page.js",
+  "/guides/page": "app/guides/page.js",
   "/heic-to-pdf/page": "app/heic-to-pdf/page.js",
-  "/heic-to-png/page": "app/heic-to-png/page.js",
   "/heic-to-jpg/page": "app/heic-to-jpg/page.js",
+  "/heic-to-png/page": "app/heic-to-png/page.js",
   "/page": "app/page.js",
-  "/privacy/page": "app/privacy/page.js"
+  "/privacy/page": "app/privacy/page.js",
+  "/about/page": "app/about/page.js"
 }
