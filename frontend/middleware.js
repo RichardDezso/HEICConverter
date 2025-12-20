@@ -4,10 +4,9 @@ export function middleware(request) {
   const url = request.nextUrl.clone();
   const hostname = request.headers.get('host') || '';
   
-  // Redirect www to non-www (permanent 308 redirect)
-  if (hostname.startsWith('www.')) {
-    const newHostname = hostname.replace('www.', '');
-    url.host = newHostname;
+  // Redirect non-www to www (permanent 308 redirect)
+  if (hostname === 'heicconverteronline.com') {
+    url.host = 'www.heicconverteronline.com';
     url.protocol = 'https';
     
     // 308 Permanent Redirect (preserves HTTP method)
