@@ -1,31 +1,19 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 export function middleware(request) {
+  const host = request.headers.get("host") || "";
   const url = request.nextUrl.clone();
-  const hostname = request.headers.get('host') || '';
-  
-  // Redirect non-www to www (permanent 308 redirect)
-  if (hostname === 'heicconverteronline.com') {
-    url.host = 'www.heicconverteronline.com';
-    url.protocol = 'https';
-    
-    // 308 Permanent Redirect (preserves HTTP method)
+
+  // Canonical: non-www
+  if (host.startsWith("www.")) {
+    url.host = host.slice(4); // remove "www."
     return NextResponse.redirect(url, 308);
   }
-  
+
   return NextResponse.next();
 }
 
-// Run middleware on all routes
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public folder files
-     */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-  ],
+  matcher: ["/:path*"],
 };
+
