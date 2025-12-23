@@ -1,19 +1,28 @@
 import { NextResponse } from "next/server";
 
 export function middleware(request) {
-  const host = request.headers.get("host") || "";
   const url = request.nextUrl.clone();
 
-  // Canonical: non-www
-  if (host.startsWith("www.")) {
-    url.host = host.slice(4); // remove "www."
+  // Prefer the ORIGINAL host from proxy headers
+  const xfHost = request.headers.get("x-forwarded-host");
+  const origHost = request.headers.get("x-original-host");
+  const host = (xfHost || origHost || request.headers.get("host") || "").toLowerCase();
+
+  // Optional debug (remove after)
+  const debug = NextResponse.next();
+  debug.headers.set("x-mw", "1");
+  debug.headers.set("x-seen-host", host);
+
+  // Redirect www -> non-www
+  if (host.startsWith("www.heicconverteronline.com")) {
+    url.host = "heicconverteronline.com";
+    url.protocol = "https:";
     return NextResponse.redirect(url, 308);
   }
 
-  return NextResponse.next();
+  return debug;
 }
 
 export const config = {
-  matcher: ["/:path*"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };
-
