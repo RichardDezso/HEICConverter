@@ -19,7 +19,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Redirect old blog routes
       {
         source: '/blog',
         destination: '/guides',
@@ -34,13 +33,4 @@ const nextConfig = {
   },
 };
 
-module.exports = {
-  async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/sitemap',
-      },
-    ];
-  },
-};
+module.exports = nextConfig;
