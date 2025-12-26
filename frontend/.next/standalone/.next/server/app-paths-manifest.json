@@ -1,15 +1,15 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/contact/page": "app/contact/page.js",
-  "/sitemap.xml/route": "app/sitemap.xml/route.js",
   "/robots.txt/route": "app/robots.txt/route.js",
-  "/about/page": "app/about/page.js",
-  "/faq/page": "app/faq/page.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/guides/page": "app/guides/page.js",
-  "/heic-to-jpg/page": "app/heic-to-jpg/page.js",
+  "/faq/page": "app/faq/page.js",
+  "/about/page": "app/about/page.js",
   "/guides/[slug]/page": "app/guides/[slug]/page.js",
+  "/page": "app/page.js",
+  "/heic-to-jpg/page": "app/heic-to-jpg/page.js",
   "/heic-to-pdf/page": "app/heic-to-pdf/page.js",
   "/heic-to-png/page": "app/heic-to-png/page.js",
-  "/privacy/page": "app/privacy/page.js",
-  "/page": "app/page.js"
+  "/privacy/page": "app/privacy/page.js"
 }
