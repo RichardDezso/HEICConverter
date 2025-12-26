@@ -19,13 +19,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Redirect www to non-www (non-www is canonical)
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.heicconverteronline.com' }],
-        destination: 'https://heicconverteronline.com/:path*',
-        permanent: true,
-      },
       // Redirect old blog routes
       {
         source: '/blog',
