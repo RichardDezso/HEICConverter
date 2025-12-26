@@ -14,7 +14,7 @@ export function middleware(request) {
   debug.headers.set("x-seen-host", host);
 
   // Redirect www -> non-www
-  if (host.startsWith("www.heicconverteronline.com")) {
+  if (host === "www.heicconverteronline.com" || host.startsWith("www.")) {
     url.host = "heicconverteronline.com";
     url.protocol = "https:";
     return NextResponse.redirect(url, 308);
